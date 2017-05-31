@@ -1,0 +1,32 @@
+{
+  "name": "universal-render",
+  "version": "1.0.0",
+  "description": "",
+  "main": "universal-render.sketchplugin",
+  "manifest": "src/manifest.json",
+  "scripts": {
+    "build": "skpm build",
+    "watch": "skpm build --watch",
+    "render": "skpm build --watch --run",
+    "render:once": "skpm build --run",
+    "web": "react run src/index.web.js",
+    "link-plugin": "skpm link",
+    "native": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "author": "Jon Gold <jon.gold@airbnb.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "skpm": "^0.9.0"
+  },
+  "dependencies": {
+    "nwb": "^0.15.6",
+    "prop-types": "^15.5.8",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-native": "^0.42.3",
+    "react-primitives": "^0.3.4",
+    "react-primitives-google-static-map": "^1.0.1",
+    "react-sketchapp": "^0.10.0",
+    "react-test-renderer": "^15.4.1"
+  }
+}

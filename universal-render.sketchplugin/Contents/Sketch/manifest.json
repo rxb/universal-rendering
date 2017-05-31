@@ -1,0 +1,22 @@
+{
+  "compatibleVersion": 1,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "react-sketchapp: Foursquare + Google Maps",
+      "identifier": "main",
+      "script": "index.sketch.js"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "main"
+    ]
+  },
+  "version": "1.0.0",
+  "description": "",
+  "name": "universal-render",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml"
+}
