@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-primitives';
 import swatches from './swatches';
+import flexStyles from './flex';
+
 
 const base = 16;
 const space = base * .75;
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	bounds: {
-		maxWidth: 800
+		maxWidth: 800,
 	},
 	section: {
 		paddingTop: spaceSection,
@@ -102,4 +104,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default styles;
+export default {...styles, ...flexStyles};

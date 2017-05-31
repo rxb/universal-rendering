@@ -7,6 +7,8 @@ import Stripe from './components/Stripe';
 import Bounds from './components/Bounds';
 import Section from './components/Section';
 import Chunk from './components/Chunk';
+import Flex from './components/Flex';
+
 
 const Catalog = () => (
 	<Stripe>
@@ -21,6 +23,12 @@ const Catalog = () => (
 				<Chunk>
 					<Text style={styles.text}>Please work</Text>
 					<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
+				</Chunk>
+				<Chunk>
+					<Flex>
+						<View><Text>ok</Text></View>
+						<View><Text>ok</Text></View>
+					</Flex>
 				</Chunk>
 			</Section>
 		</Bounds>

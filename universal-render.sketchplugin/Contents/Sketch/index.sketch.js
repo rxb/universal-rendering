@@ -8233,6 +8233,10 @@ var _Chunk = __webpack_require__(197);
 
 var _Chunk2 = _interopRequireDefault(_Chunk);
 
+var _Flex = __webpack_require__(200);
+
+var _Flex2 = _interopRequireDefault(_Flex);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var Catalog = function Catalog() {
@@ -8271,6 +8275,32 @@ var Catalog = function Catalog() {
 						_reactPrimitives.Text,
 						{ style: [_styles2['default'].text, _styles2['default'].textSecondary] },
 						'Please work'
+					)
+				),
+				_react2['default'].createElement(
+					_Chunk2['default'],
+					null,
+					_react2['default'].createElement(
+						_Flex2['default'],
+						null,
+						_react2['default'].createElement(
+							_reactPrimitives.View,
+							null,
+							_react2['default'].createElement(
+								_reactPrimitives.Text,
+								null,
+								'ok'
+							)
+						),
+						_react2['default'].createElement(
+							_reactPrimitives.View,
+							null,
+							_react2['default'].createElement(
+								_reactPrimitives.Text,
+								null,
+								'ok'
+							)
+						)
 					)
 				)
 			)
@@ -21550,6 +21580,10 @@ var _swatches = __webpack_require__(195);
 
 var _swatches2 = _interopRequireDefault(_swatches);
 
+var _flex = __webpack_require__(201);
+
+var _flex2 = _interopRequireDefault(_flex);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var base = 16;
@@ -21646,7 +21680,7 @@ var styles = _reactPrimitives.StyleSheet.create({
 	}
 });
 
-exports['default'] = styles;
+exports['default'] = Object.assign({}, styles, _flex2['default']);
 module.exports = exports['default'];
 
 /***/ }),
@@ -21894,6 +21928,337 @@ var Stripe = function (_React$Component) {
 }(_react2['default'].Component);
 
 exports['default'] = Stripe;
+module.exports = exports['default'];
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(console) {Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.FLEX_ALIGN_CLASS = exports.FLEX_NOGUTTER_CLASS = exports.FLEX_WRAP_CLASS = exports.FLEX_COLUMN_CLASS = exports.FLEX_ROW_CLASS = exports.FLEX_CLASS = exports.DIRECTION_COLUMN = exports.DIRECTION_ROW = exports.VALID_SPACE = exports.VALID_BREAKPOINTS = exports.VALID_ALIGNMENTS = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(59);
+
+var _propTypes = __webpack_require__(21);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styles = __webpack_require__(194);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VALID_ALIGNMENTS = exports.VALID_ALIGNMENTS = {
+	top: 'Top',
+	bottom: 'Bottom',
+	center: 'Center'
+};
+
+var VALID_BREAKPOINTS = exports.VALID_BREAKPOINTS = {
+	all: 'atAll',
+	medium: 'atMedium',
+	large: 'atLarge'
+};
+
+var VALID_SPACE = exports.VALID_SPACE = {
+	center: 'center',
+	spaceAround: 'spaceAround',
+	spaceBetween: 'spaceBetween',
+	flexEnd: 'flexEnd'
+};
+
+var DIRECTION_ROW = exports.DIRECTION_ROW = 'row';
+var DIRECTION_COLUMN = exports.DIRECTION_COLUMN = 'column';
+
+var FLEX_CLASS = exports.FLEX_CLASS = 'flex';
+var FLEX_ROW_CLASS = exports.FLEX_ROW_CLASS = FLEX_CLASS + '--' + DIRECTION_ROW;
+var FLEX_COLUMN_CLASS = exports.FLEX_COLUMN_CLASS = FLEX_CLASS + '--' + DIRECTION_COLUMN;
+var FLEX_WRAP_CLASS = exports.FLEX_WRAP_CLASS = FLEX_CLASS + '--wrap';
+var FLEX_NOGUTTER_CLASS = exports.FLEX_NOGUTTER_CLASS = FLEX_CLASS + '--noGutters';
+var FLEX_ALIGN_CLASS = exports.FLEX_ALIGN_CLASS = FLEX_CLASS + '--align';
+
+var Flex = function (_React$Component) {
+	_inherits(Flex, _React$Component);
+
+	function Flex() {
+		_classCallCheck(this, Flex);
+
+		return _possibleConstructorReturn(this, (Flex.__proto__ || Object.getPrototypeOf(Flex)).apply(this, arguments));
+	}
+
+	_createClass(Flex, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var _props = this.props,
+				    direction = _props.direction,
+				    switchDirection = _props.switchDirection,
+				    wrap = _props.wrap,
+				    noGutters = _props.noGutters,
+				    justify = _props.justify,
+				    align = _props.align,
+				    rowReverse = _props.rowReverse,
+				    columnReverse = _props.columnReverse,
+				    children = _props.children,
+				    style = _props.style,
+				    other = _objectWithoutProperties(_props, ['direction', 'switchDirection', 'wrap', 'noGutters', 'justify', 'align', 'rowReverse', 'columnReverse', 'children', 'style']);
+
+				var columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
+				var rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
+
+				var isColumn = direction === DIRECTION_COLUMN;
+
+				// decide which types of styles are active
+				// only make an array of keys for now
+				// this will be used to reference correct styles for the <Flex> and also <FlexItem>s
+				var styleKeys = [FLEX_CLASS,
+
+				// horizontal default
+				!isColumn ? FLEX_ROW_CLASS : undefined, !isColumn && switchDirection ? String(VALID_BREAKPOINTS[switchDirection]) + '_' + FLEX_COLUMN_CLASS : undefined,
+
+				// vertical default
+				isColumn ? FLEX_COLUMN_CLASS : undefined, isColumn && switchDirection ? String(VALID_BREAKPOINTS[switchDirection]) + '_' + FLEX_ROW_CLASS : undefined,
+
+				// reverse breakpoint modifiers
+				rowReverse ? String(rowReverseBreakpoint) + '_flex--rowReverse' : undefined, columnReverse ? String(columnReverseBreakpoint) + '_flex--columnReverse' : undefined,
+
+				// other
+				wrap ? FLEX_WRAP_CLASS : undefined, noGutters ? FLEX_NOGUTTER_CLASS : undefined, justify ? FLEX_CLASS + '--' + String(VALID_SPACE[justify]) : undefined, align ? '' + FLEX_ALIGN_CLASS + String(VALID_ALIGNMENTS[align]) : undefined];
+
+				var combinedStyles = styleKeys.map(function (key, i) {
+					return _styles2['default'][key];
+				});
+
+				var combinedChildStyles = styleKeys.map(function (key, i) {
+					// making up a thing here
+					// three dashes "__" is for direct descendants of the first part
+					return _styles2['default'][String(key) + '__flex-item'];
+				});
+
+				/*
+    const combinedStyles = [
+    	styles[FLEX_CLASS],
+    		// horizontal default
+    	!isColumn ? styles[FLEX_ROW_CLASS] : {},
+    	!isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`] : {},
+    		// vertical default
+    	isColumn ? styles[FLEX_COLUMN_CLASS] : {},
+    	isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`] : {},
+    		// reverse breakpoint modifiers
+    	rowReverse ? styles[`${rowReverseBreakpoint}_flex--rowReverse`] : {},
+    	columnReverse ? styles[`${columnReverseBreakpoint}_flex--columnReverse`] : {},
+    		// other
+    	wrap ? styles[FLEX_WRAP_CLASS] : {},
+    	noGutters ? styles[FLEX_NOGUTTER_CLASS] : {},
+    	justify ? styles[`${FLEX_CLASS}--${VALID_SPACE[justify]}`] : {},
+    	align ? styles[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`] : {},
+    		style
+    ];
+    */
+
+				console.log(combinedStyles);
+
+				return _react2['default'].createElement(
+					_reactPrimitives.View,
+					_extends({
+						style: combinedStyles
+					}, other),
+					children
+				);
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Flex;
+}(_react2['default'].Component);
+
+Flex.propTypes = {
+	align: _propTypes2['default'].oneOf(Object.keys(VALID_ALIGNMENTS)),
+	justify: _propTypes2['default'].oneOf(Object.keys(VALID_SPACE)),
+	wrap: _propTypes2['default'].bool,
+	noGutters: _propTypes2['default'].bool,
+
+	direction: _propTypes2['default'].oneOf([DIRECTION_ROW, DIRECTION_COLUMN]),
+	switchDirection: _propTypes2['default'].oneOf(Object.keys(VALID_BREAKPOINTS)),
+	rowReverse: _propTypes2['default'].oneOfType([_propTypes2['default'].bool, _propTypes2['default'].oneOf(Object.keys(VALID_BREAKPOINTS))]),
+	columnReverse: _propTypes2['default'].oneOfType([_propTypes2['default'].bool, _propTypes2['default'].oneOf(Object.keys(VALID_BREAKPOINTS))])
+};
+
+Flex.defaultProps = {
+	direction: DIRECTION_ROW
+};
+
+exports['default'] = Flex;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _reactPrimitives = __webpack_require__(59);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var base = 16;
+var space = base * .75;
+var spaceSection = base * 1.5;
+var flexGrowFactors = [1, 2, 3, 4, 5, 6, 7];
+
+var styles = _reactPrimitives.StyleSheet.create(Object.assign({
+
+	/*doc
+ ---
+ title: Flex
+ ---
+ Lays out content using `display: flex`.
+ 
+ The `.flex` class is rendered with the `<Flex>` component.
+ 
+ Direct children of `.flex` are flex children, and use the
+ `<FlexItem>` component to render the class `.flex-item`
+ with an optional prop `shrink` to render the class
+ `.row-item--shrink` for a flex-shrink item.
+ 
+ By default, the `<Flex>` component renders the class
+ `flex--row` to setting `flex-direction: row`
+ 
+ The flex children in flex row do not have a `flex-basis` set; a
+ basis is not required for most common layout tasks.
+ */
+
+	'flex': {
+		flexDirection: 'row'
+	},
+
+	'flex-item': {
+		flex: 1,
+		paddingLeft: base,
+		':first-child': {
+			paddingLeft: 0
+		}
+	},
+
+	/*doc
+ ---
+ title: Flex Layout Variants
+ ---
+ The following classes control the `flex-direction` allowing
+ content to be arranged in rows or columns.
+ 
+ Class                   | Description
+ ----------------------- | -------------------------------
+ `.flex--row`            | arranges content in rows
+ `.flex--column`         | arranges content in columns
+ 
+ Layout can change from row to column (or vice versa) at a breakpoint
+ Using this signature: `.at[Breakpoint]_flex--[direction]`
+ 
+ Breakpoints        | Direction       | Description
+ ------------------ | --------------- | ---------------------------
+ `medium`, `large`  | `row`           | arranges content in a row
+ `medium`, `large`  | `column`        | arranges content in column
+ */
+
+	'flex--row': {
+		flexDirection: 'row'
+	},
+
+	'flex--row__flex-item': {
+		paddingLeft: base,
+		width: 'auto',
+		':first-child': {
+			paddingLeft: 0
+		}
+	},
+
+	/*
+ @include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
+ 	@include flexParent('column', false);
+ 	> .flex-item {
+ 		width: 100%;
+ 		padding-left: 0;
+ 	}
+ }
+ */
+
+	'flex--column': {
+		flexDirection: 'column',
+		height: '100%'
+	},
+
+	'flex--column__flex-item': {
+		width: '100%',
+		paddingLeft: 0
+	}
+
+}, flexGrowFactors.map(function (factor, i) {
+	return _defineProperty({}, 'flex-item--' + String(factor), {
+		flex: factor
+	});
+}), {
+
+	'flex-item--shrink': {
+		flex: 0
+	},
+
+	/*doc
+ ---
+ title: Flex Variants
+ ---
+ The following classes are variants that can be by adding
+ props to the <Flex> component
+ 
+ Class                            | Description
+ -------------------------------- | -------------------------------
+ `.flex--noGutters`               | removes padding from all `.flex-item` children
+ `.flex--wrap`                    | allows row wrapping (useful for collapsing rows in smaller viewports)
+ `.flex--rowReverse`              | reverses row order
+ `.atMedium_flex--rowReverse`     | reverses row order for medium breakpoint and up
+ `.atLarge_flex--rowReverse`      | reverses row order for large breakpoint and up
+ `.flex--columnReverse`           | reverses column order
+ `.atMedium_flex--columnReverse`  | reverses column order for medium breakpoint and up
+ `.atLarge_flex--columnReverse`   | reverses column order for large breakpoint and up
+ */
+
+	'flex--noGutters__flex-item': {
+		padding: 0,
+		':first-child, :last-child': {
+			padding: 0
+		}
+	},
+
+	'flex--wrap': {
+		flexWrap: 'wrap'
+	}
+
+}));
+
+exports['default'] = styles;
 module.exports = exports['default'];
 
 /***/ })
