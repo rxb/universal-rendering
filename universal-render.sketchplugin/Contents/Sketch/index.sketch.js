@@ -8265,11 +8265,6 @@ var Catalog = function Catalog() {
 				_react2['default'].createElement(
 					_Chunk2['default'],
 					null,
-					_react2['default'].createElement(_DumbButton2['default'], { label: 'This is a button!!!!' })
-				),
-				_react2['default'].createElement(
-					_Chunk2['default'],
-					null,
 					_react2['default'].createElement(
 						_reactPrimitives.Text,
 						{ style: _styles2['default'].text },
@@ -8290,21 +8285,22 @@ var Catalog = function Catalog() {
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							null,
-							_react2['default'].createElement(
-								_reactPrimitives.Text,
-								null,
-								'ok'
-							)
+							_react2['default'].createElement(_DumbButton2['default'], { label: 'Do it' })
 						),
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							null,
-							_react2['default'].createElement(
-								_reactPrimitives.Text,
-								null,
-								'ok'
-							)
+							_react2['default'].createElement(_DumbButton2['default'], { label: 'Don\'t do it' })
 						)
+					)
+				),
+				_react2['default'].createElement(
+					_Chunk2['default'],
+					null,
+					_react2['default'].createElement(
+						_reactPrimitives.Text,
+						{ style: _styles2['default'].text },
+						'Nobody cares'
 					)
 				)
 			)

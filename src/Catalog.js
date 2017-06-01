@@ -19,17 +19,17 @@ const Catalog = () => (
 					<Text style={[styles.text, styles.textPageHead]}>Here we go!</Text>
 				</Chunk>
 				<Chunk>
-					<DumbButton label='This is a button!!!!' />
-				</Chunk>
-				<Chunk>
 					<Text style={styles.text}>Please work</Text>
 					<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
 				</Chunk>
 				<Chunk>
 					<Flex>
-						<FlexItem><Text>ok</Text></FlexItem>
-						<FlexItem><Text>ok</Text></FlexItem>
+						<FlexItem><DumbButton label="Do it" /></FlexItem>
+						<FlexItem><DumbButton label="Don't do it" /></FlexItem>
 					</Flex>
+				</Chunk>
+				<Chunk>
+					<Text style={styles.text}>Nobody cares</Text>
 				</Chunk>
 			</Section>
 		</Bounds>
