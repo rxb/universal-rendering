@@ -84,47 +84,25 @@ class Flex extends React.Component {
 			return styles[key];
 		});
 
-		const combinedChildStyles = styleKeys.map((key, i)=>{
+		const combinedDescendantStyles = styleKeys.map((key, i)=>{
 			// making up a thing here
 			// three dashes "__" is for direct descendants of the first part
 			return styles[`${key}__flex-item`];
 		});
 
 
-		/*
-		const combinedStyles = [
-			styles[FLEX_CLASS],
-
-			// horizontal default
-			!isColumn ? styles[FLEX_ROW_CLASS] : {},
-			!isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`] : {},
-
-			// vertical default
-			isColumn ? styles[FLEX_COLUMN_CLASS] : {},
-			isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`] : {},
-
-			// reverse breakpoint modifiers
-			rowReverse ? styles[`${rowReverseBreakpoint}_flex--rowReverse`] : {},
-			columnReverse ? styles[`${columnReverseBreakpoint}_flex--columnReverse`] : {},
-
-			// other
-			wrap ? styles[FLEX_WRAP_CLASS] : {},
-			noGutters ? styles[FLEX_NOGUTTER_CLASS] : {},
-			justify ? styles[`${FLEX_CLASS}--${VALID_SPACE[justify]}`] : {},
-			align ? styles[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`] : {},
-
-			style
-		];
-		*/
-
-		console.log(combinedStyles);
+		const childrenWithProps = React.Children.map(this.props.children,
+			(child) => React.cloneElement(child, {
+				descendantStyles: combinedDescendantStyles
+			})
+		);
 
 		return (
 			<View
 				style={combinedStyles}
 				{...other}
 			>
-				{children}
+				{childrenWithProps}
 			</View>
 		);
 	}

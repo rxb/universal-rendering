@@ -8,6 +8,7 @@ import Bounds from './components/Bounds';
 import Section from './components/Section';
 import Chunk from './components/Chunk';
 import Flex from './components/Flex';
+import FlexItem from './components/FlexItem';
 
 
 const Catalog = () => (
@@ -26,8 +27,8 @@ const Catalog = () => (
 				</Chunk>
 				<Chunk>
 					<Flex>
-						<View><Text>ok</Text></View>
-						<View><Text>ok</Text></View>
+						<FlexItem><Text>ok</Text></FlexItem>
+						<FlexItem><Text>ok</Text></FlexItem>
 					</Flex>
 				</Chunk>
 			</Section>

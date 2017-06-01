@@ -15,6 +15,7 @@ class FlexItem extends React.Component {
 			className,
 			shrink,
 			growFactor,
+			descendantStyles,
 			...other
 		} = this.props;
 
@@ -24,9 +25,9 @@ class FlexItem extends React.Component {
 			growFactor ? `${FLEX_ITEM_GROW_CLASS}${growFactor}` : undefined
 		];
 
-		const combinedStyles = styleKeys.map((key, i)=>{
+		const combinedStyles = [...descendantStyles, ...styleKeys.map((key, i)=>{
 			return styles[key];
-		});
+		})];
 
 		return (
 			<View

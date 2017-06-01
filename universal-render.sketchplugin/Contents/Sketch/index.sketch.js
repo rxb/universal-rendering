@@ -8237,6 +8237,10 @@ var _Flex = __webpack_require__(200);
 
 var _Flex2 = _interopRequireDefault(_Flex);
 
+var _FlexItem = __webpack_require__(202);
+
+var _FlexItem2 = _interopRequireDefault(_FlexItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var Catalog = function Catalog() {
@@ -8284,7 +8288,7 @@ var Catalog = function Catalog() {
 						_Flex2['default'],
 						null,
 						_react2['default'].createElement(
-							_reactPrimitives.View,
+							_FlexItem2['default'],
 							null,
 							_react2['default'].createElement(
 								_reactPrimitives.Text,
@@ -8293,7 +8297,7 @@ var Catalog = function Catalog() {
 							)
 						),
 						_react2['default'].createElement(
-							_reactPrimitives.View,
+							_FlexItem2['default'],
 							null,
 							_react2['default'].createElement(
 								_reactPrimitives.Text,
@@ -21934,7 +21938,7 @@ module.exports = exports['default'];
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(console) {Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.FLEX_ALIGN_CLASS = exports.FLEX_NOGUTTER_CLASS = exports.FLEX_WRAP_CLASS = exports.FLEX_COLUMN_CLASS = exports.FLEX_ROW_CLASS = exports.FLEX_CLASS = exports.DIRECTION_COLUMN = exports.DIRECTION_ROW = exports.VALID_SPACE = exports.VALID_BREAKPOINTS = exports.VALID_ALIGNMENTS = undefined;
@@ -22048,41 +22052,24 @@ var Flex = function (_React$Component) {
 					return _styles2['default'][key];
 				});
 
-				var combinedChildStyles = styleKeys.map(function (key, i) {
+				var combinedDescendantStyles = styleKeys.map(function (key, i) {
 					// making up a thing here
 					// three dashes "__" is for direct descendants of the first part
 					return _styles2['default'][String(key) + '__flex-item'];
 				});
 
-				/*
-    const combinedStyles = [
-    	styles[FLEX_CLASS],
-    		// horizontal default
-    	!isColumn ? styles[FLEX_ROW_CLASS] : {},
-    	!isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`] : {},
-    		// vertical default
-    	isColumn ? styles[FLEX_COLUMN_CLASS] : {},
-    	isColumn && switchDirection ? styles[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`] : {},
-    		// reverse breakpoint modifiers
-    	rowReverse ? styles[`${rowReverseBreakpoint}_flex--rowReverse`] : {},
-    	columnReverse ? styles[`${columnReverseBreakpoint}_flex--columnReverse`] : {},
-    		// other
-    	wrap ? styles[FLEX_WRAP_CLASS] : {},
-    	noGutters ? styles[FLEX_NOGUTTER_CLASS] : {},
-    	justify ? styles[`${FLEX_CLASS}--${VALID_SPACE[justify]}`] : {},
-    	align ? styles[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`] : {},
-    		style
-    ];
-    */
-
-				console.log(combinedStyles);
+				var childrenWithProps = _react2['default'].Children.map(this.props.children, function (child) {
+					return _react2['default'].cloneElement(child, {
+						descendantStyles: combinedDescendantStyles
+					});
+				});
 
 				return _react2['default'].createElement(
 					_reactPrimitives.View,
 					_extends({
 						style: combinedStyles
 					}, other),
-					children
+					childrenWithProps
 				);
 			}
 
@@ -22110,7 +22097,6 @@ Flex.defaultProps = {
 };
 
 exports['default'] = Flex;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ }),
 /* 201 */
@@ -22260,6 +22246,100 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 
 exports['default'] = styles;
 module.exports = exports['default'];
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.FLEX_GROW_FACTORS = exports.FLEX_ITEM_GROW_CLASS = exports.FLEX_ITEM_SHRINK_CLASS = exports.FLEX_ITEM_CLASS = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _propTypes = __webpack_require__(21);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactPrimitives = __webpack_require__(59);
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styles = __webpack_require__(194);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FLEX_ITEM_CLASS = exports.FLEX_ITEM_CLASS = 'flex-item';
+var FLEX_ITEM_SHRINK_CLASS = exports.FLEX_ITEM_SHRINK_CLASS = 'flex-item--shrink';
+var FLEX_ITEM_GROW_CLASS = exports.FLEX_ITEM_GROW_CLASS = 'flex-item--';
+var FLEX_GROW_FACTORS = exports.FLEX_GROW_FACTORS = [1, 2, 3, 4, 5, 6, 7];
+
+var FlexItem = function (_React$Component) {
+	_inherits(FlexItem, _React$Component);
+
+	function FlexItem() {
+		_classCallCheck(this, FlexItem);
+
+		return _possibleConstructorReturn(this, (FlexItem.__proto__ || Object.getPrototypeOf(FlexItem)).apply(this, arguments));
+	}
+
+	_createClass(FlexItem, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var _props = this.props,
+				    children = _props.children,
+				    className = _props.className,
+				    shrink = _props.shrink,
+				    growFactor = _props.growFactor,
+				    descendantStyles = _props.descendantStyles,
+				    other = _objectWithoutProperties(_props, ['children', 'className', 'shrink', 'growFactor', 'descendantStyles']);
+
+				var styleKeys = [FLEX_ITEM_CLASS, shrink ? FLEX_ITEM_SHRINK_CLASS : undefined, growFactor ? '' + FLEX_ITEM_GROW_CLASS + String(growFactor) : undefined];
+
+				var combinedStyles = [].concat(_toConsumableArray(descendantStyles), _toConsumableArray(styleKeys.map(function (key, i) {
+					return _styles2['default'][key];
+				})));
+
+				return _react2['default'].createElement(
+					_reactPrimitives.View,
+					_extends({
+						style: combinedStyles
+					}, other),
+					children
+				);
+			}
+
+			return render;
+		}()
+	}]);
+
+	return FlexItem;
+}(_react2['default'].Component);
+
+FlexItem.propTypes = {
+	shrink: _propTypes2['default'].bool,
+	growFactor: _propTypes2['default'].oneOf(FLEX_GROW_FACTORS)
+};
+
+exports['default'] = FlexItem;
 
 /***/ })
 /******/ ]);
