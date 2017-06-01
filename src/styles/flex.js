@@ -1,9 +1,22 @@
 import { StyleSheet } from 'react-primitives';
 
+// move to a constants file somewhere
 const base = 16;
 const space = base * .75;
 const spaceSection = base * 1.5;
 const flexGrowFactors = [1, 2, 3, 4, 5, 6, 7];
+const flexJustifyMap = {
+	"flexEnd": "flexEnd",
+	"center": "center",
+	"spaceBetween": "spaceBetween",
+	"spaceAround": "spaceAround"
+};
+const flexAlignMap = {
+	"top": "flexStart",
+	"bottom": "flexEnd",
+	"center": "center"
+};
+
 
 const styles = StyleSheet.create({
 
@@ -168,9 +181,6 @@ Class                            | Description
 
 'flex--noGutters__flex-item': {
 	padding: 0,
-	':first-child, :last-child': {
-		padding: 0
-	}
 },
 
 'flex--wrap': {
@@ -210,6 +220,15 @@ Class                   | Variants
 */
 
 
+...(()=>{
+	const justifyObj = {};
+	for( let jName in flexJustifyMap){
+		justifyObj[`flex--${jName}`] = { flexContent: flexJustifyMap[jName] };
+	}
+	return justifyObj;
+})(),
+
+
 /*
 @each $jName, $jprop in $flexJustifyMap {
 	.flex--#{$jName} {
@@ -228,6 +247,15 @@ Class                   | Variants
 `flex--alignBottom`     | aligns content to `flex-end`
 `flex--alignCenter`     | aligns content to `center`
 */
+
+
+...(()=>{
+	const alignObj = {};
+	for( let aName in flexAlignMap){
+		alignObj[`flex--align${aName.charAt(0).toUpperCase()}`] = { flexContent: flexAlignMap[aName] };
+	}
+	return alignObj;
+})(),
 
 /*
 @each $aName, $aprop in $flexAlignMap {

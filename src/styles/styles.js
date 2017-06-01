@@ -63,6 +63,25 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 
+	// AVATAR
+	avatar: {
+		resizeMode: 'cover',
+	},
+	'avatar--small':{
+		width: 24,
+		height: 24,
+		borderRadius: 12
+	},
+	'avatar--medium':{
+		width: 36,
+		height: 36,
+		borderRadius: 18
+	},
+	'avatar--big':{
+		width: 120,
+		height: 120,
+		borderRadius: 60
+	},
 
 	// TEXT
 	text: {

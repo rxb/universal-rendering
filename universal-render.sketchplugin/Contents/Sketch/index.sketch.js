@@ -1215,6 +1215,26 @@ var styles = _reactPrimitives.StyleSheet.create({
 		textAlign: 'center'
 	},
 
+	// AVATAR
+	avatar: {
+		resizeMode: 'cover'
+	},
+	'avatar--small': {
+		width: 24,
+		height: 24,
+		borderRadius: 12
+	},
+	'avatar--medium': {
+		width: 36,
+		height: 36,
+		borderRadius: 18
+	},
+	'avatar--big': {
+		width: 120,
+		height: 120,
+		borderRadius: 60
+	},
+
 	// TEXT
 	text: {
 		fontSize: base,
@@ -8357,6 +8377,10 @@ var _FlexItem = __webpack_require__(109);
 
 var _FlexItem2 = _interopRequireDefault(_FlexItem);
 
+var _Avatar = __webpack_require__(203);
+
+var _Avatar2 = _interopRequireDefault(_Avatar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var Catalog = function Catalog() {
@@ -8391,7 +8415,11 @@ var Catalog = function Catalog() {
 						{ style: [_styles2['default'].text, _styles2['default'].textSecondary] },
 						'Please work'
 					)
-				),
+				)
+			),
+			_react2['default'].createElement(
+				_Section2['default'],
+				null,
 				_react2['default'].createElement(
 					_Flex2['default'],
 					null,
@@ -8444,14 +8472,40 @@ var Catalog = function Catalog() {
 							_react2['default'].createElement(_DumbButton2['default'], { label: '1' })
 						)
 					)
-				),
+				)
+			),
+			_react2['default'].createElement(
+				_Section2['default'],
+				null,
 				_react2['default'].createElement(
-					_Chunk2['default'],
+					_Flex2['default'],
 					null,
 					_react2['default'].createElement(
-						_reactPrimitives.Text,
-						{ style: _styles2['default'].text },
-						'No one cares'
+						_FlexItem2['default'],
+						{ shrink: true },
+						_react2['default'].createElement(
+							_Chunk2['default'],
+							null,
+							_react2['default'].createElement(_Avatar2['default'], { source: { uri: 'https://randomuser.me/api/portraits/women/2.jpg' } })
+						)
+					),
+					_react2['default'].createElement(
+						_FlexItem2['default'],
+						null,
+						_react2['default'].createElement(
+							_Chunk2['default'],
+							null,
+							_react2['default'].createElement(
+								_reactPrimitives.Text,
+								{ style: [_styles2['default'].text, _styles2['default'].textStrong] },
+								'Sally Smeetup'
+							),
+							_react2['default'].createElement(
+								_reactPrimitives.Text,
+								{ style: _styles2['default'].text },
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+							)
+						)
 					)
 				)
 			)
@@ -11567,10 +11621,22 @@ module.exports = exports['default'];
 
 var _reactPrimitives = __webpack_require__(9);
 
+// move to a constants file somewhere
 var base = 16;
 var space = base * .75;
 var spaceSection = base * 1.5;
 var flexGrowFactors = [1, 2, 3, 4, 5, 6, 7];
+var flexJustifyMap = {
+	"flexEnd": "flexEnd",
+	"center": "center",
+	"spaceBetween": "spaceBetween",
+	"spaceAround": "spaceAround"
+};
+var flexAlignMap = {
+	"top": "flexStart",
+	"bottom": "flexEnd",
+	"center": "center"
+};
 
 var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 
@@ -11669,15 +11735,15 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 		for (var _iterator = flexGrowFactors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 			var factor = _step.value;
 
-			growObj['flex-item--' + String(factor)] = { flex: factor };
+			growObj["flex-item--" + String(factor)] = { flex: factor };
 		}
 	} catch (err) {
 		_didIteratorError = true;
 		_iteratorError = err;
 	} finally {
 		try {
-			if (!_iteratorNormalCompletion && _iterator['return']) {
-				_iterator['return']();
+			if (!_iteratorNormalCompletion && _iterator["return"]) {
+				_iterator["return"]();
 			}
 		} finally {
 			if (_didIteratorError) {
@@ -11721,22 +11787,31 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
  */
 
 	'flex--noGutters__flex-item': {
-		padding: 0,
-		':first-child, :last-child': {
-			padding: 0
-		}
+		padding: 0
 	},
 
 	'flex--wrap': {
 		flexWrap: 'wrap'
 	}
 
-}));
+}, function () {
+	var justifyObj = {};
+	for (var jName in flexJustifyMap) {
+		justifyObj["flex--" + jName] = { flexContent: flexJustifyMap[jName] };
+	}
+	return justifyObj;
+}(), function () {
+	var alignObj = {};
+	for (var aName in flexAlignMap) {
+		alignObj["flex--align" + String(aName.charAt(0).toUpperCase())] = { flexContent: flexAlignMap[aName] };
+	}
+	return alignObj;
+}()));
 
 console.log(styles);
 
-exports['default'] = styles;
-module.exports = exports['default'];
+exports["default"] = styles;
+module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ }),
@@ -22404,6 +22479,80 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(9);
+
+var _propTypes = __webpack_require__(17);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styles = __webpack_require__(12);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Avatar = function (_React$Component) {
+	_inherits(Avatar, _React$Component);
+
+	function Avatar() {
+		_classCallCheck(this, Avatar);
+
+		return _possibleConstructorReturn(this, (Avatar.__proto__ || Object.getPrototypeOf(Avatar)).apply(this, arguments));
+	}
+
+	_createClass(Avatar, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var size = this.props.size;
+
+
+				var style = _styles2['default']['avatar--' + String(size)];
+
+				return _react2['default'].createElement(_reactPrimitives.Image, {
+					source: this.props.source,
+					style: style
+				});
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Avatar;
+}(_react2['default'].Component);
+
+Avatar.defaultProps = {
+	size: 'medium'
+};
+
+Avatar.propTypes = {
+	size: _propTypes2['default'].oneOf(['small', 'medium', 'large'])
+};
+
+exports['default'] = Avatar;
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-primitives';
+import { View, Text, Image, StyleSheet } from 'react-primitives';
 import styles from './styles/styles';
 
 import DumbButton from './components/DumbButton';
@@ -9,6 +9,7 @@ import Section from './components/Section';
 import Chunk from './components/Chunk';
 import Flex from './components/Flex';
 import FlexItem from './components/FlexItem';
+import Avatar from './components/Avatar';
 
 
 const Catalog = () => (
@@ -22,6 +23,8 @@ const Catalog = () => (
 					<Text style={styles.text}>Please work</Text>
 					<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
 				</Chunk>
+			</Section>
+			<Section>
 				<Flex>
 					<FlexItem>
 						<Chunk>
@@ -51,9 +54,21 @@ const Catalog = () => (
 						</Chunk>
 					</FlexItem>
 				</Flex>
-				<Chunk>
-					<Text style={styles.text}>No one cares</Text>
-				</Chunk>
+			</Section>
+			<Section>
+				<Flex>
+					<FlexItem shrink>
+						<Chunk>
+							<Avatar source={{uri: 'https://randomuser.me/api/portraits/women/2.jpg'}} />
+						</Chunk>
+					</FlexItem>
+					<FlexItem>
+						<Chunk>
+							<Text style={[styles.text, styles.textStrong]}>Sally Smeetup</Text>
+							<Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+						</Chunk>
+					</FlexItem>
+				</Flex>
 			</Section>
 		</Bounds>
 	</Stripe>
