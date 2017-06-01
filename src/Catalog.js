@@ -22,14 +22,37 @@ const Catalog = () => (
 					<Text style={styles.text}>Please work</Text>
 					<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
 				</Chunk>
+				<Flex>
+					<FlexItem>
+						<Chunk>
+							<DumbButton label="Do it" />
+						</Chunk>
+					</FlexItem>
+					<FlexItem>
+						<Chunk>
+							<DumbButton label="Don't do it" />
+						</Chunk>
+					</FlexItem>
+				</Flex>
+				<Flex>
+					<FlexItem>
+						<Chunk>
+							<DumbButton label="1" />
+						</Chunk>
+					</FlexItem>
+					<FlexItem growFactor={2}>
+						<Chunk>
+							<DumbButton label="2" />
+						</Chunk>
+					</FlexItem>
+					<FlexItem>
+						<Chunk>
+							<DumbButton label="1" />
+						</Chunk>
+					</FlexItem>
+				</Flex>
 				<Chunk>
-					<Flex>
-						<FlexItem><DumbButton label="Do it" /></FlexItem>
-						<FlexItem><DumbButton label="Don't do it" /></FlexItem>
-					</Flex>
-				</Chunk>
-				<Chunk>
-					<Text style={styles.text}>Nobody cares</Text>
+					<Text style={styles.text}>No one cares</Text>
 				</Chunk>
 			</Section>
 		</Bounds>

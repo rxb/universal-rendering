@@ -62,38 +62,44 @@ class Flex extends React.Component {
 			FLEX_CLASS,
 
 			// horizontal default
-			!isColumn ? FLEX_ROW_CLASS : undefined,
-			!isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}` : undefined,
+			...[!isColumn ? FLEX_ROW_CLASS : undefined],
+			...[!isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}` : undefined],
 
 			// vertical default
-			isColumn ? FLEX_COLUMN_CLASS : undefined,
-			isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}` : undefined,
+			...[isColumn ? FLEX_COLUMN_CLASS : undefined],
+			...[isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}` : undefined],
 
 			// reverse breakpoint modifiers
-			rowReverse ? `${rowReverseBreakpoint}_flex--rowReverse` : undefined,
-			columnReverse ? `${columnReverseBreakpoint}_flex--columnReverse` : undefined,
+			...[rowReverse ? `${rowReverseBreakpoint}_flex--rowReverse` : undefined],
+			...[columnReverse ? `${columnReverseBreakpoint}_flex--columnReverse` : undefined],
 
 			// other
-			wrap ? FLEX_WRAP_CLASS : undefined,
-			noGutters ? FLEX_NOGUTTER_CLASS : undefined,
-			justify ? `${FLEX_CLASS}--${VALID_SPACE[justify]}` : undefined,
-			align ? `${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}` : undefined,
+			...[wrap ? FLEX_WRAP_CLASS : undefined],
+			...[noGutters ? FLEX_NOGUTTER_CLASS : undefined],
+			...[justify ? `${FLEX_CLASS}--${VALID_SPACE[justify]}` : undefined],
+			...[align ? `${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}` : undefined],
 		]
 
 		const combinedStyles = styleKeys.map((key, i)=>{
 			return styles[key];
+		}).filter(function(item){
+			return item !== undefined;
 		});
 
+
+		// assuming that the child of Flex will always be FlexItem or equivalent
+		// if that turns out to not be true, this will need to be rethought
 		const combinedDescendantStyles = styleKeys.map((key, i)=>{
 			// making up a thing here
-			// three dashes "__" is for direct descendants of the first part
+			// two dashes "__" is for direct descendants of the first part
 			return styles[`${key}__flex-item`];
+		}).filter(function(item){
+			return item !== undefined;
 		});
-
-
 		const childrenWithProps = React.Children.map(this.props.children,
-			(child) => React.cloneElement(child, {
-				descendantStyles: combinedDescendantStyles
+			(child, i) => React.cloneElement(child, {
+				descendantStyles: combinedDescendantStyles,
+				isFirstChild: (i==0)
 			})
 		);
 

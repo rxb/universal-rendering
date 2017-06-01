@@ -29,15 +29,21 @@ basis is not required for most common layout tasks.
 */
 
 'flex' : {
-	flexDirection: 'row'
+	alignItems: 'stretch',
+	flexDirection: 'row',
 },
 
 'flex-item' : {
+	width: 'auto',
 	flex: 1,
-	paddingLeft: base,
-	':first-child': {
-		paddingLeft: 0
-	}
+	flexBasis: 0, // https://stackoverflow.com/questions/7985021/css-flexbox-issue-why-is-the-width-of-my-flexchildren-affected-by-their-content
+},
+
+// testing setting first-child manually
+// works across platforms better
+// consider a composable component that adds this to iteratable items
+'flex-item--firstChild': {
+	paddingLeft: 0
 },
 
 /*doc
@@ -68,11 +74,8 @@ Breakpoints        | Direction       | Description
 
 'flex--row__flex-item': {
 	paddingLeft: base,
-	width: 'auto',
-	':first-child': {
-		paddingLeft: 0
-	}
 },
+
 
 
 /*
@@ -91,7 +94,6 @@ Breakpoints        | Direction       | Description
 },
 
 'flex--column__flex-item': {
-	width: '100%',
 	paddingLeft: 0
 },
 
@@ -125,11 +127,21 @@ Class                       | Description
 `.flex-item--[n]` | Sets grow factor
 */
 
+...(()=>{
+	const growObj = {};
+	for(let factor of flexGrowFactors){
+		growObj[`flex-item--${factor}`] = { flex: factor };
+	}
+	return growObj;
+})(),
+
+/*
 ...(flexGrowFactors.map( (factor, i) => {
-	return {[`flex-item--${factor}`]: {
+	return { ['flex-item'+factor] : {
 		flex: factor
 	}};
 })),
+*/
 
 'flex-item--shrink': {
 	flex: 0
@@ -226,5 +238,7 @@ Class                   | Variants
 */
 
 });
+
+console.log(styles);
 
 export default styles;

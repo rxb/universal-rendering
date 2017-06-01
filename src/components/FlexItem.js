@@ -16,13 +16,15 @@ class FlexItem extends React.Component {
 			shrink,
 			growFactor,
 			descendantStyles,
+			isFirstChild,
 			...other
 		} = this.props;
 
 		const styleKeys = [
 			FLEX_ITEM_CLASS,
 			shrink ? FLEX_ITEM_SHRINK_CLASS : undefined,
-			growFactor ? `${FLEX_ITEM_GROW_CLASS}${growFactor}` : undefined
+			growFactor ? `${FLEX_ITEM_GROW_CLASS}${growFactor}` : undefined,
+			isFirstChild ? `${FLEX_ITEM_CLASS}--firstChild` : undefined
 		];
 
 		const combinedStyles = [...descendantStyles, ...styleKeys.map((key, i)=>{

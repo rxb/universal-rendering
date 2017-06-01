@@ -50,8 +50,7 @@ const styles = StyleSheet.create({
 	button: {
 		backgroundColor: 'purple',
 		padding: space,
-		borderRadius: 4,
-		display: 'flex',
+		borderRadius: 5,
 		'@media (min-width: 600px)': {
 			backgroundColor: 'red'
 		},
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: base,
 		fontFamily: 'Helvetica',
-		fontWeight: 400,
+		fontWeight: '400',
 		color: swatches.textPrimary,
 
 		// retina/non-retina rendering
@@ -88,19 +87,19 @@ const styles = StyleSheet.create({
 		fontSize: base * 0.875,
 	},
 	textStrong: {
-		fontWeight: 600,
+		fontWeight: '600',
 	},
 	textBig: {
 		fontSize: base * 1.375,
-		fontWeight: 900
+		fontWeight: '900'
 	},
 	textSectionHead: {
 		fontSize: base * 1.125,
-		fontWeight: 900
+		fontWeight: '900'
 	},
 	textPageHead: {
 		fontSize: base * 2,
-		fontWeight: 900
+		fontWeight: '900'
 	}
 });
 
