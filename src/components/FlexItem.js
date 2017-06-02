@@ -17,6 +17,7 @@ class FlexItem extends React.Component {
 			growFactor,
 			descendantStyles,
 			isFirstChild,
+			media,
 			...other
 		} = this.props;
 

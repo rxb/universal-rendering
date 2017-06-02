@@ -65,9 +65,11 @@ export const WithMatchMedia = (
 	 * @returns {undefined}
 	 */
 	componentDidMount() {
-		if (!window.matchMedia) {
-			return;
+
+		if ( typeof window === 'undefined' || !window.matchMedia ) {
+			return false;
 		}
+
 
 		this.mediaQueries = breakpointNames
 			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
@@ -78,6 +80,7 @@ export const WithMatchMedia = (
 		});
 
 		this.setState({ media: getUpdatedMediaState(this.mediaQueries) });
+
 	}
 
 	/**
