@@ -16,6 +16,13 @@ const flexAlignMap = {
 	"bottom": "flexEnd",
 	"center": "center"
 };
+const breakpointsMap = {
+	"medium": 600,
+	"large": 800
+}
+const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 const styles = StyleSheet.create({
@@ -49,7 +56,7 @@ basis is not required for most common layout tasks.
 'flex-item' : {
 	width: 'auto',
 	flex: 1,
-	flexBasis: 0, // https://stackoverflow.com/questions/7985021/css-flexbox-issue-why-is-the-width-of-my-flexchildren-affected-by-their-content
+	flexBasis: 0
 },
 
 // testing setting first-child manually
@@ -90,6 +97,20 @@ Breakpoints        | Direction       | Description
 },
 
 
+// media-query switchDirection
+// i feel like this could be a helper function
+...(()=>{
+	const breakpointObj = {};
+	for( let bp in breakpointsMap){
+		breakpointObj[`at${capitalize(bp)}_flex--column`] = {
+			[`@media (min-width: ${breakpointsMap[bp]}px)`]: {
+				flexDirection: 'column'
+			}
+		}
+	}
+	return breakpointObj;
+})(),
+
 
 /*
 @include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
@@ -109,6 +130,20 @@ Breakpoints        | Direction       | Description
 'flex--column__flex-item': {
 	paddingLeft: 0
 },
+
+
+// media-query switchDirection
+...(()=>{
+	const breakpointObj = {};
+	for( let bp in breakpointsMap){
+		breakpointObj[`at${capitalize(bp)}_flex--row`] = {
+			[`@media (min-width: ${breakpointsMap[bp]}px)`]: {
+				flexDirection: 'row'
+			}
+		}
+	}
+	return breakpointObj;
+})(),
 
 /*
 @include _bpModifier(flex, row, true) {
@@ -252,7 +287,7 @@ Class                   | Variants
 ...(()=>{
 	const alignObj = {};
 	for( let aName in flexAlignMap){
-		alignObj[`flex--align${aName.charAt(0).toUpperCase()}`] = { flexContent: flexAlignMap[aName] };
+		alignObj[`flex--align${capitalize(aName)}`] = { flexContent: flexAlignMap[aName] };
 	}
 	return alignObj;
 })(),

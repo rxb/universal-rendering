@@ -1187,7 +1187,7 @@ var styles = _reactPrimitives.StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	bounds: {
-		maxWidth: 800
+		maxWidth: 1000
 	},
 	section: {
 		paddingTop: spaceSection,
@@ -8422,7 +8422,7 @@ var Catalog = function Catalog() {
 				null,
 				_react2['default'].createElement(
 					_Flex2['default'],
-					null,
+					{ switchDirection: 'medium' },
 					_react2['default'].createElement(
 						_FlexItem2['default'],
 						null,
@@ -11621,6 +11621,8 @@ module.exports = exports['default'];
 
 var _reactPrimitives = __webpack_require__(9);
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // move to a constants file somewhere
 var base = 16;
 var space = base * .75;
@@ -11636,6 +11638,13 @@ var flexAlignMap = {
 	"top": "flexStart",
 	"bottom": "flexEnd",
 	"center": "center"
+};
+var breakpointsMap = {
+	"medium": 600,
+	"large": 800
+};
+var capitalize = function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 var styles = _reactPrimitives.StyleSheet.create(Object.assign({
@@ -11668,7 +11677,8 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 	'flex-item': {
 		width: 'auto',
 		flex: 1,
-		flexBasis: 0 },
+		flexBasis: 0
+	},
 
 	// testing setting first-child manually
 	// works across platforms better
@@ -11704,7 +11714,17 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 
 	'flex--row__flex-item': {
 		paddingLeft: base
-	},
+	}
+
+}, function () {
+	var breakpointObj = {};
+	for (var bp in breakpointsMap) {
+		breakpointObj["at" + String(capitalize(bp)) + "_flex--column"] = _defineProperty({}, "@media (min-width: " + String(breakpointsMap[bp]) + "px)", {
+			flexDirection: 'column'
+		});
+	}
+	return breakpointObj;
+}(), {
 
 	/*
  @include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
@@ -11726,6 +11746,14 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 	}
 
 }, function () {
+	var breakpointObj = {};
+	for (var bp in breakpointsMap) {
+		breakpointObj["at" + String(capitalize(bp)) + "_flex--row"] = _defineProperty({}, "@media (min-width: " + String(breakpointsMap[bp]) + "px)", {
+			flexDirection: 'row'
+		});
+	}
+	return breakpointObj;
+}(), function () {
 	var growObj = {};
 	var _iteratorNormalCompletion = true;
 	var _didIteratorError = false;
@@ -11803,7 +11831,7 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 }(), function () {
 	var alignObj = {};
 	for (var aName in flexAlignMap) {
-		alignObj["flex--align" + String(aName.charAt(0).toUpperCase())] = { flexContent: flexAlignMap[aName] };
+		alignObj["flex--align" + String(capitalize(aName))] = { flexContent: flexAlignMap[aName] };
 	}
 	return alignObj;
 }()));

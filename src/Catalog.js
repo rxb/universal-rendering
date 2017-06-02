@@ -25,7 +25,7 @@ const Catalog = () => (
 				</Chunk>
 			</Section>
 			<Section>
-				<Flex>
+				<Flex switchDirection="medium">
 					<FlexItem>
 						<Chunk>
 							<DumbButton label="Do it" />

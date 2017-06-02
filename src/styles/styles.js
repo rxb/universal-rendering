@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	bounds: {
-		maxWidth: 800,
+		maxWidth: 1000,
 	},
 	section: {
 		paddingTop: spaceSection,
