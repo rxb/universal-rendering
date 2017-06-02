@@ -9,7 +9,7 @@ const breakpointNames = Object.keys(MEDIA_QUERIES);
  */
 export const getStateNameByBreakpoint = breakpoint => {
 	const capitalizedBp = `${breakpoint.substr(0,1).toUpperCase()}${breakpoint.substr(1)}`;
-	return `isAt${capitalizedBp}Up`;
+	return `at${capitalizedBp}`;
 };
 
 /**
@@ -69,7 +69,6 @@ export const WithMatchMedia = (
 		if ( typeof window === 'undefined' || !window.matchMedia ) {
 			return false;
 		}
-
 
 		this.mediaQueries = breakpointNames
 			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));

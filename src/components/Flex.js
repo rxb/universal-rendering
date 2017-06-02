@@ -51,9 +51,6 @@ class Flex extends React.Component {
 			...other
 		} = this.props;
 
-		const columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
-		const rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
-
 		const isColumn = direction === DIRECTION_COLUMN;
 
 
@@ -65,15 +62,15 @@ class Flex extends React.Component {
 
 			// horizontal default
 			...[!isColumn ? FLEX_ROW_CLASS : undefined],
-			...[!isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}` : undefined],
+			...[!isColumn && switchDirection && media[switchDirection] ? FLEX_COLUMN_CLASS : undefined],
 
 			// vertical default
 			...[isColumn ? FLEX_COLUMN_CLASS : undefined],
-			...[isColumn && switchDirection ? `${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}` : undefined],
+			...[isColumn && switchDirection && media[switchDirection] ? FLEX_ROW_CLASS : undefined],
 
 			// reverse breakpoint modifiers
-			...[rowReverse ? `${rowReverseBreakpoint}_flex--rowReverse` : undefined],
-			...[columnReverse ? `${columnReverseBreakpoint}_flex--columnReverse` : undefined],
+			...[rowReverse && media[rowReverse] ? 'flex--rowReverse' : undefined],
+			...[columnReverse && media[columnReverse] ? 'flex--columnReverse' : undefined],
 
 			// other
 			...[wrap ? FLEX_WRAP_CLASS : undefined],

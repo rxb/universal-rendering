@@ -8339,7 +8339,7 @@ var Catalog = function Catalog() {
 				),
 				_react2['default'].createElement(
 					_Flex2['default'],
-					null,
+					{ direction: 'column', switchDirection: 'atMedium' },
 					_react2['default'].createElement(
 						_FlexItem2['default'],
 						null,
@@ -8364,7 +8364,7 @@ var Catalog = function Catalog() {
 						_react2['default'].createElement(
 							_Chunk2['default'],
 							null,
-							_react2['default'].createElement(_DumbButton2['default'], { label: '1' })
+							_react2['default'].createElement(_DumbButton2['default'], { label: '3' })
 						)
 					)
 				)
@@ -10811,15 +10811,12 @@ var Flex = function (_React$Component) {
 				    media = _props.media,
 				    other = _objectWithoutProperties(_props, ['direction', 'switchDirection', 'wrap', 'noGutters', 'justify', 'align', 'rowReverse', 'columnReverse', 'children', 'style', 'media']);
 
-				var columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
-				var rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
-
 				var isColumn = direction === DIRECTION_COLUMN;
 
 				// decide which types of styles are active
 				// only make an array of keys for now
 				// this will be used to reference correct styles for the <Flex> and also <FlexItem>s
-				var styleKeys = [FLEX_CLASS].concat([!isColumn ? FLEX_ROW_CLASS : undefined], [!isColumn && switchDirection ? String(VALID_BREAKPOINTS[switchDirection]) + '_' + FLEX_COLUMN_CLASS : undefined], [isColumn ? FLEX_COLUMN_CLASS : undefined], [isColumn && switchDirection ? String(VALID_BREAKPOINTS[switchDirection]) + '_' + FLEX_ROW_CLASS : undefined], [rowReverse ? String(rowReverseBreakpoint) + '_flex--rowReverse' : undefined], [columnReverse ? String(columnReverseBreakpoint) + '_flex--columnReverse' : undefined], [wrap ? FLEX_WRAP_CLASS : undefined], [noGutters ? FLEX_NOGUTTER_CLASS : undefined], [justify ? FLEX_CLASS + '--' + String(VALID_SPACE[justify]) : undefined], [align ? '' + FLEX_ALIGN_CLASS + String(VALID_ALIGNMENTS[align]) : undefined], [media && media.isAtLargeUp ? 'flex-test' : undefined]);
+				var styleKeys = [FLEX_CLASS].concat([!isColumn ? FLEX_ROW_CLASS : undefined], [!isColumn && switchDirection && media[switchDirection] ? FLEX_COLUMN_CLASS : undefined], [isColumn ? FLEX_COLUMN_CLASS : undefined], [isColumn && switchDirection && media[switchDirection] ? FLEX_ROW_CLASS : undefined], [rowReverse && media[rowReverse] ? 'flex--rowReverse' : undefined], [columnReverse && media[columnReverse] ? 'flex--columnReverse' : undefined], [wrap ? FLEX_WRAP_CLASS : undefined], [noGutters ? FLEX_NOGUTTER_CLASS : undefined], [justify ? FLEX_CLASS + '--' + String(VALID_SPACE[justify]) : undefined], [align ? '' + FLEX_ALIGN_CLASS + String(VALID_ALIGNMENTS[align]) : undefined], [media && media.isAtLargeUp ? 'flex-test' : undefined]);
 
 				var combinedStyles = styleKeys.map(function (key, i) {
 					return _styles2['default'][key];
@@ -11128,7 +11125,7 @@ var breakpointNames = Object.keys(_designConstants.MEDIA_QUERIES);
  */
 var getStateNameByBreakpoint = exports.getStateNameByBreakpoint = function getStateNameByBreakpoint(breakpoint) {
 	var capitalizedBp = '' + String(breakpoint.substr(0, 1).toUpperCase()) + String(breakpoint.substr(1));
-	return 'isAt' + capitalizedBp + 'Up';
+	return 'at' + capitalizedBp;
 };
 
 /**
@@ -11440,7 +11437,8 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 	},
 
 	'flex--row__flex-item': {
-		paddingLeft: base
+		paddingLeft: base,
+		minHeight: '-webkit-min-content'
 	},
 
 	/*
@@ -11475,7 +11473,8 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 	},
 
 	'flex--column__flex-item': {
-		paddingLeft: 0
+		paddingLeft: 0,
+		minHeight: '-webkit-min-content'
 	}
 
 }, function () {
@@ -11538,6 +11537,14 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 
 	'flex--wrap': {
 		flexWrap: 'wrap'
+	},
+
+	'flex--columnReverse': {
+		flexDirection: 'column-reverse'
+	},
+
+	'flex--rowReverse': {
+		flexDirection: 'row-reverse'
 	}
 
 }, function () {

@@ -37,7 +37,7 @@ const Catalog = () => (
 						</Chunk>
 					</FlexItem>
 				</Flex>
-				<Flex>
+				<Flex direction="column" switchDirection="atMedium">
 					<FlexItem>
 						<Chunk>
 							<DumbButton label="1" />
@@ -50,7 +50,7 @@ const Catalog = () => (
 					</FlexItem>
 					<FlexItem>
 						<Chunk>
-							<DumbButton label="1" />
+							<DumbButton label="3" />
 						</Chunk>
 					</FlexItem>
 				</Flex>

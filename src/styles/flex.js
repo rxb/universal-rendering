@@ -94,6 +94,7 @@ Breakpoints        | Direction       | Description
 
 'flex--row__flex-item': {
 	paddingLeft: base,
+	minHeight: '-webkit-min-content'
 },
 
 
@@ -129,7 +130,8 @@ Breakpoints        | Direction       | Description
 },
 
 'flex--column__flex-item': {
-	paddingLeft: 0
+	paddingLeft: 0,
+	minHeight: '-webkit-min-content'
 },
 
 
@@ -219,25 +221,24 @@ Class                            | Description
 	flexWrap: 'wrap'
 },
 
-/*
-@include _bpModifier(flex, columnReverse, true) {
-	@include flex-direction(column-reverse);
-}
+'flex--columnReverse': {
+	flexDirection: 'column-reverse'
+},
 
-@include _bpModifier(flex, rowReverse, true) {
-	@include flex-direction(row-reverse);
-	> .flex-item {
-		&:first-child {
-			@include responsiveVarContext--base() {
-				padding-left: $base;
-			}
-		}
-		&:last-child {
-			padding-left: 0;
-		}
-	}
-}
+'flex--rowReverse': {
+	flexDirection: 'row-reverse'
+},
+
+/*
+'flex--rowReverse__flex-item--firstChild': {
+	paddingLeft: space
+},
+
+'flex--rowReverse__flex-item--lastChild': {
+	paddingLeft: space
+},
 */
+
 
 /*
 Content justification variants are also available (see also: <a class="link" target="_blank" href="https://css-tricks.com/almanac/properties/j/justify-content/">css tricks flexbox demo</a>)
