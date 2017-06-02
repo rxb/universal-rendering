@@ -97,6 +97,7 @@ Breakpoints        | Direction       | Description
 },
 
 
+/*
 // media-query switchDirection
 // i feel like this could be a helper function
 ...(()=>{
@@ -110,7 +111,7 @@ Breakpoints        | Direction       | Description
 	}
 	return breakpointObj;
 })(),
-
+*/
 
 /*
 @include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
@@ -132,6 +133,7 @@ Breakpoints        | Direction       | Description
 },
 
 
+/*
 // media-query switchDirection
 ...(()=>{
 	const breakpointObj = {};
@@ -144,6 +146,7 @@ Breakpoints        | Direction       | Description
 	}
 	return breakpointObj;
 })(),
+*/
 
 /*
 @include _bpModifier(flex, row, true) {
@@ -183,16 +186,10 @@ Class                       | Description
 	return growObj;
 })(),
 
-/*
-...(flexGrowFactors.map( (factor, i) => {
-	return { ['flex-item'+factor] : {
-		flex: factor
-	}};
-})),
-*/
 
 'flex-item--shrink': {
-	flex: 0
+	flex: 0,
+	minWidth: '-webkit-min-content'
 },
 
 /*doc
@@ -300,8 +297,11 @@ Class                   | Variants
 }
 */
 
-});
 
-console.log(styles);
+'flex-test': {
+	backgroundColor: 'limegreen'
+}
+
+});
 
 export default styles;

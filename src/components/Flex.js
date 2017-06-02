@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-primitives';
 import PropTypes from 'prop-types';
 import styles from '../styles/styles';
+import {WithMatchMedia} from './WithMatchMedia';
 
 export const VALID_ALIGNMENTS = {
 	top: 'Top',
@@ -46,6 +47,7 @@ class Flex extends React.Component {
 			columnReverse,
 			children,
 			style,
+			media,
 			...other
 		} = this.props;
 
@@ -78,6 +80,9 @@ class Flex extends React.Component {
 			...[noGutters ? FLEX_NOGUTTER_CLASS : undefined],
 			...[justify ? `${FLEX_CLASS}--${VALID_SPACE[justify]}` : undefined],
 			...[align ? `${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}` : undefined],
+
+			// media test
+			...[media && media.isAtLargeUp ? 'flex-test' : undefined],
 		]
 
 		const combinedStyles = styleKeys.map((key, i)=>{
@@ -103,9 +108,12 @@ class Flex extends React.Component {
 			})
 		);
 
+		console.log(media);
+
 		return (
 			<View
 				style={combinedStyles}
+				media={media}
 				{...other}
 			>
 				{childrenWithProps}
@@ -139,4 +147,4 @@ Flex.defaultProps = {
 	direction: DIRECTION_ROW,
 };
 
-export default Flex;
+export default WithMatchMedia(Flex);

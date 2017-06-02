@@ -51,12 +51,14 @@ const styles = StyleSheet.create({
 		backgroundColor: 'purple',
 		padding: space,
 		borderRadius: 5,
+		/*
 		'@media (min-width: 600px)': {
 			backgroundColor: 'red'
 		},
 		':hover': {
 			backgroundColor: 'green',
 		}
+		*/
 	},
 	buttonText: {
 		color: '#ffffff',
@@ -92,9 +94,11 @@ const styles = StyleSheet.create({
 
 		// retina/non-retina rendering
 		WebkitFontSmoothing: 'antialiased',
+		/*
 		'@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and ( min-device-pixel-ratio: 1.25), only screen and ( min-resolution: 200dpi), only screen and ( min-resolution: 1.25dppx)':  {
 				WebkitFontSmoothing: 'subpixel-antialiased'
 		}
+		*/
 	},
 	textSecondary:{
 		color: swatches.textSecondary
