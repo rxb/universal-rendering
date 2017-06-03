@@ -98,14 +98,13 @@ class Flex extends React.Component {
 		}).filter(function(item){
 			return item !== undefined;
 		});
+
 		const childrenWithProps = React.Children.map(this.props.children,
 			(child, i) => React.cloneElement(child, {
 				descendantStyles: combinedDescendantStyles,
 				isFirstChild: (i==0)
 			})
 		);
-
-		console.log(media);
 
 		return (
 			<View

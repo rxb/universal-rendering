@@ -23,8 +23,6 @@ const breakpointsMap = {
 const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-
 const styles = StyleSheet.create({
 
 
@@ -98,32 +96,6 @@ Breakpoints        | Direction       | Description
 },
 
 
-/*
-// media-query switchDirection
-// i feel like this could be a helper function
-...(()=>{
-	const breakpointObj = {};
-	for( let bp in breakpointsMap){
-		breakpointObj[`at${capitalize(bp)}_flex--column`] = {
-			[`@media (min-width: ${breakpointsMap[bp]}px)`]: {
-				flexDirection: 'column'
-			}
-		}
-	}
-	return breakpointObj;
-})(),
-*/
-
-/*
-@include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
-	@include flexParent('column', false);
-	> .flex-item {
-		width: 100%;
-		padding-left: 0;
-	}
-}
-*/
-
 'flex--column': {
 	flexDirection: 'column',
 	height: '100%'
@@ -135,36 +107,6 @@ Breakpoints        | Direction       | Description
 },
 
 
-/*
-// media-query switchDirection
-...(()=>{
-	const breakpointObj = {};
-	for( let bp in breakpointsMap){
-		breakpointObj[`at${capitalize(bp)}_flex--row`] = {
-			[`@media (min-width: ${breakpointsMap[bp]}px)`]: {
-				flexDirection: 'row'
-			}
-		}
-	}
-	return breakpointObj;
-})(),
-*/
-
-/*
-@include _bpModifier(flex, row, true) {
-	@include flexParent('row', false);
-	height: auto;
-	> .flex-item {
-		@include responsiveVarContext--base() {
-			padding-left: $base;
-		}
-		width: auto;
-		&:first-child {
-			padding-left: 0;
-		}
-	}
-}
-*/
 
 /*doc
 ---
@@ -193,6 +135,7 @@ Class                       | Description
 	flex: 0,
 	minWidth: '-webkit-min-content'
 },
+
 
 /*doc
 ---
@@ -252,7 +195,6 @@ Class                   | Variants
 `.flex--spaceAround`    | justifies content to `spaceAround`
 */
 
-
 ...(()=>{
 	const justifyObj = {};
 	for( let jName in flexJustifyMap){
@@ -261,14 +203,6 @@ Class                   | Variants
 	return justifyObj;
 })(),
 
-
-/*
-@each $jName, $jprop in $flexJustifyMap {
-	.flex--#{$jName} {
-		@include justify-content($jprop);
-	}
-}
-*/
 
 
 /*
@@ -281,7 +215,6 @@ Class                   | Variants
 `flex--alignCenter`     | aligns content to `center`
 */
 
-
 ...(()=>{
 	const alignObj = {};
 	for( let aName in flexAlignMap){
@@ -290,18 +223,6 @@ Class                   | Variants
 	return alignObj;
 })(),
 
-/*
-@each $aName, $aprop in $flexAlignMap {
-	.flex--align#{str-firstCharToUpper($aName))} {
-		@include align-items($aprop);
-	}
-}
-*/
-
-
-'flex-test': {
-	backgroundColor: 'limegreen'
-}
 
 });
 

@@ -10720,7 +10720,7 @@ module.exports = exports['default'];
 /* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(console) {Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.FLEX_ALIGN_CLASS = exports.FLEX_NOGUTTER_CLASS = exports.FLEX_WRAP_CLASS = exports.FLEX_COLUMN_CLASS = exports.FLEX_ROW_CLASS = exports.FLEX_CLASS = exports.DIRECTION_COLUMN = exports.DIRECTION_ROW = exports.VALID_SPACE = exports.VALID_BREAKPOINTS = exports.VALID_ALIGNMENTS = undefined;
@@ -10833,14 +10833,13 @@ var Flex = function (_React$Component) {
 				}).filter(function (item) {
 					return item !== undefined;
 				});
+
 				var childrenWithProps = _react2['default'].Children.map(this.props.children, function (child, i) {
 					return _react2['default'].cloneElement(child, {
 						descendantStyles: combinedDescendantStyles,
 						isFirstChild: i == 0
 					});
 				});
-
-				console.log(media);
 
 				return _react2['default'].createElement(
 					_reactPrimitives.View,
@@ -10876,7 +10875,6 @@ Flex.defaultProps = {
 };
 
 exports['default'] = (0, _WithMatchMedia.WithMatchMedia)(Flex);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(26)))
 
 /***/ }),
 /* 105 */
@@ -11370,7 +11368,6 @@ var breakpointsMap = {
 var capitalize = function capitalize(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
-
 var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 
 	/*doc
@@ -11440,32 +11437,6 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 		paddingLeft: base,
 		minHeight: '-webkit-min-content'
 	},
-
-	/*
- // media-query switchDirection
- // i feel like this could be a helper function
- ...(()=>{
- 	const breakpointObj = {};
- 	for( let bp in breakpointsMap){
- 		breakpointObj[`at${capitalize(bp)}_flex--column`] = {
- 			[`@media (min-width: ${breakpointsMap[bp]}px)`]: {
- 				flexDirection: 'column'
- 			}
- 		}
- 	}
- 	return breakpointObj;
- })(),
- */
-
-	/*
- @include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
- 	@include flexParent('column', false);
- 	> .flex-item {
- 		width: 100%;
- 		padding-left: 0;
- 	}
- }
- */
 
 	'flex--column': {
 		flexDirection: 'column',
@@ -11559,21 +11530,7 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 		alignObj["flex--align" + String(capitalize(aName))] = { flexContent: flexAlignMap[aName] };
 	}
 	return alignObj;
-}(), {
-
-	/*
- @each $aName, $aprop in $flexAlignMap {
- 	.flex--align#{str-firstCharToUpper($aName))} {
- 		@include align-items($aprop);
- 	}
- }
- */
-
-	'flex-test': {
-		backgroundColor: 'limegreen'
-	}
-
-}));
+}()));
 
 exports["default"] = styles;
 module.exports = exports["default"];
