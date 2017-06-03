@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
 		borderWidth: 0,
 		color: swatches.textPrimary
 	},
+	'input--multiline': {
+		minHeight: base * 6
+	},
 
 
 	// BUTTON

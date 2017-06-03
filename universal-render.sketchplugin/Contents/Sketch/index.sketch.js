@@ -1041,6 +1041,9 @@ var styles = _reactPrimitives.StyleSheet.create({
 		borderWidth: 0,
 		color: _swatches2['default'].textPrimary
 	},
+	'input--multiline': {
+		minHeight: base * 6
+	},
 
 	// BUTTON
 	button: {
@@ -8416,6 +8419,11 @@ var Catalog = function Catalog() {
 					_Chunk2['default'],
 					null,
 					_react2['default'].createElement(_TextInput2['default'], { placeholder: 'Hey I\'m a text input' })
+				),
+				_react2['default'].createElement(
+					_Chunk2['default'],
+					null,
+					_react2['default'].createElement(_TextInput2['default'], { multiline: true, placeholder: 'Hey I\'m a multiline text input (aka textarea)' })
 				)
 			)
 		)
@@ -20416,9 +20424,12 @@ var TextInput = function (_React$Component) {
 		key: 'render',
 		value: function () {
 			function render() {
+				var multiline = this.props.multiline;
+
+
 				return _react2['default'].createElement(
 					_reactPrimitives.View,
-					{ style: _styles2['default'].input },
+					{ style: [_styles2['default'].input, multiline ? _styles2['default']['input--multiline'] : {}] },
 					this.props.placeholder && _react2['default'].createElement(
 						_reactPrimitives.Text,
 						{ style: [_styles2['default'].text, _styles2['default'].textHint] },

@@ -12,7 +12,8 @@ const Document = () => (
 				color: ${swatches.textHint};
 			}
 			.input:focus{
-				outline: blue solid 1px;
+				box-shadow: 0 0 0 1px blue;
+				outline: 0;
 			}
 		`}}></style>
 		<Catalog />

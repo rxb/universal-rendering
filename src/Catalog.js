@@ -75,6 +75,9 @@ const Catalog = () => (
 				<Chunk>
 					<TextInput placeholder="Hey I'm a text input" />
 				</Chunk>
+				<Chunk>
+					<TextInput multiline placeholder="Hey I'm a multiline text input (aka textarea)" />
+				</Chunk>
 			</Section>
 		</Bounds>
 	</Stripe>
