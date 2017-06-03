@@ -8280,6 +8280,10 @@ var _Avatar = __webpack_require__(100);
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
 
+var _Icon = __webpack_require__(187);
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
 var _TextInput = __webpack_require__(186);
 
 var _TextInput2 = _interopRequireDefault(_TextInput);
@@ -8293,6 +8297,15 @@ var Catalog = function Catalog() {
 		_react2['default'].createElement(
 			_Bounds2['default'],
 			null,
+			_react2['default'].createElement(
+				_Section2['default'],
+				null,
+				_react2['default'].createElement(
+					_Chunk2['default'],
+					null,
+					_react2['default'].createElement(_Icon2['default'], { shape: 'arrow_back' })
+				)
+			),
 			_react2['default'].createElement(
 				_Section2['default'],
 				null,
@@ -20446,6 +20459,91 @@ var TextInput = function (_React$Component) {
 }(_react2['default'].Component);
 
 exports['default'] = TextInput;
+module.exports = exports['default'];
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(7);
+
+var _propTypes = __webpack_require__(11);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styles = __webpack_require__(10);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Icon = function (_React$Component) {
+	_inherits(Icon, _React$Component);
+
+	function Icon() {
+		_classCallCheck(this, Icon);
+
+		return _possibleConstructorReturn(this, (Icon.__proto__ || Object.getPrototypeOf(Icon)).apply(this, arguments));
+	}
+
+	_createClass(Icon, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var _props = this.props,
+				    size = _props.size,
+				    shape = _props.shape;
+
+				// sketch can't do SVG yet, so we need a PNG for them
+
+				var source = _reactPrimitives.Platform.OS == 'sketch' ? 'https://rawgit.com/google/material-design-icons/master/navigation/1x_web/ic_' + String(shape) + '_black_48dp.png' : 'https://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_' + String(shape) + '_48px.svg';
+
+				// to be able to tint this, even on web we need to use svgs not as a standard image
+				// would be nice to implement tintcolor from RN
+				return _react2['default'].createElement(_reactPrimitives.Image, {
+					source: { uri: source },
+					style: {
+						width: 40,
+						height: 40,
+						resizeMode: 'contain'
+					}
+				});
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Icon;
+}(_react2['default'].Component);
+
+Icon.defaultProps = {
+	size: 'medium'
+};
+
+Icon.propTypes = {
+	size: _propTypes2['default'].oneOf(['small', 'medium', 'large']),
+	shape: _propTypes2['default'].object,
+	color: _propTypes2['default'].string
+};
+
+exports['default'] = Icon;
 module.exports = exports['default'];
 
 /***/ })

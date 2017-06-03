@@ -10,12 +10,18 @@ import Chunk from './components/Chunk';
 import Flex from './components/Flex';
 import FlexItem from './components/FlexItem';
 import Avatar from './components/Avatar';
+import Icon from './components/Icon';
 import TextInput from './components/TextInput';
 
 
 const Catalog = () => (
 	<Stripe>
 		<Bounds>
+			<Section>
+				<Chunk>
+					<Icon shape='arrow_back' />
+				</Chunk>
+			</Section>
 			<Section>
 				<Chunk>
 					<Text style={[styles.text, styles.textPageHead]}>Here we go!</Text>
@@ -56,6 +62,7 @@ const Catalog = () => (
 					</FlexItem>
 				</Flex>
 			</Section>
+
 			<Section>
 				<Flex>
 					<FlexItem shrink>
