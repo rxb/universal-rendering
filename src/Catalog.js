@@ -10,6 +10,7 @@ import Chunk from './components/Chunk';
 import Flex from './components/Flex';
 import FlexItem from './components/FlexItem';
 import Avatar from './components/Avatar';
+import TextInput from './components/TextInput';
 
 
 const Catalog = () => (
@@ -69,6 +70,11 @@ const Catalog = () => (
 						</Chunk>
 					</FlexItem>
 				</Flex>
+			</Section>
+			<Section>
+				<Chunk>
+					<TextInput placeholder="Hey I'm a text input" />
+				</Chunk>
 			</Section>
 		</Bounds>
 	</Stripe>

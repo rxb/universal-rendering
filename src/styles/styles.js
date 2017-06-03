@@ -45,20 +45,21 @@ const styles = StyleSheet.create({
 		paddingBottom: space
 	},
 
+	// INPUT
+	input: {
+		backgroundColor: '#eeeeee',
+		padding: space,
+		borderRadius: 5,
+		borderWidth: 0,
+		color: swatches.textPrimary
+	},
+
 
 	// BUTTON
 	button: {
 		backgroundColor: 'purple',
 		padding: space,
 		borderRadius: 5,
-		/*
-		'@media (min-width: 600px)': {
-			backgroundColor: 'red'
-		},
-		':hover': {
-			backgroundColor: 'green',
-		}
-		*/
 	},
 	buttonText: {
 		color: '#ffffff',

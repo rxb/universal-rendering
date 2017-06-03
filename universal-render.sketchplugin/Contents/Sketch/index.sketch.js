@@ -1033,19 +1033,20 @@ var styles = _reactPrimitives.StyleSheet.create({
 		paddingBottom: space
 	},
 
+	// INPUT
+	input: {
+		backgroundColor: '#eeeeee',
+		padding: space,
+		borderRadius: 5,
+		borderWidth: 0,
+		color: _swatches2['default'].textPrimary
+	},
+
 	// BUTTON
 	button: {
 		backgroundColor: 'purple',
 		padding: space,
 		borderRadius: 5
-		/*
-  '@media (min-width: 600px)': {
-  	backgroundColor: 'red'
-  },
-  ':hover': {
-  	backgroundColor: 'green',
-  }
-  */
 	},
 	buttonText: {
 		color: '#ffffff',
@@ -8276,6 +8277,10 @@ var _Avatar = __webpack_require__(100);
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
 
+var _TextInput = __webpack_require__(186);
+
+var _TextInput2 = _interopRequireDefault(_TextInput);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var Catalog = function Catalog() {
@@ -8402,6 +8407,15 @@ var Catalog = function Catalog() {
 							)
 						)
 					)
+				)
+			),
+			_react2['default'].createElement(
+				_Section2['default'],
+				null,
+				_react2['default'].createElement(
+					_Chunk2['default'],
+					null,
+					_react2['default'].createElement(_TextInput2['default'], { placeholder: 'Hey I\'m a text input' })
 				)
 			)
 		)
@@ -20360,6 +20374,68 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(7);
+
+var _styles = __webpack_require__(10);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TextInput = function (_React$Component) {
+	_inherits(TextInput, _React$Component);
+
+	function TextInput() {
+		_classCallCheck(this, TextInput);
+
+		return _possibleConstructorReturn(this, (TextInput.__proto__ || Object.getPrototypeOf(TextInput)).apply(this, arguments));
+	}
+
+	_createClass(TextInput, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				return _react2['default'].createElement(
+					_reactPrimitives.View,
+					{ style: _styles2['default'].input },
+					this.props.placeholder && _react2['default'].createElement(
+						_reactPrimitives.Text,
+						{ style: [_styles2['default'].text, _styles2['default'].textHint] },
+						this.props.placeholder
+					)
+				);
+			}
+
+			return render;
+		}()
+	}]);
+
+	return TextInput;
+}(_react2['default'].Component);
+
+exports['default'] = TextInput;
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
