@@ -11,20 +11,56 @@ class Icon extends React.Component {
 		} = this.props;
 
 		// sketch can't do SVG yet, so we need a PNG for them
-		const source = (Platform.OS == 'sketch') ? `https://rawgit.com/google/material-design-icons/master/navigation/1x_web/ic_${shape}_black_48dp.png` : `https://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_${shape}_48px.svg`;
-
 		// to be able to tint this, even on web we need to use svgs not as a standard image
 		// would be nice to implement tintcolor from RN
-		return(
-			<Image
-				source={{uri: source}}
-				style={{
-					width: 40,
-					height: 40,
-					resizeMode: 'contain'
-				}}
-				/>
-		);
+
+
+		/*
+
+		pick an icon set
+		https://github.com/colebemis/feather
+		feather-icons
+
+		https://github.com/sindresorhus/grunt-svgmin
+		https://github.com/FWeinb/grunt-svgstore
+
+		svgstore (makes a big sprite) https://github.com/svgstore/svgstore
+
+		grunt png colors or whatever
+		https://github.com/filamentgroup/directory-colorfy
+		https://github.com/domenic/svg2png
+
+		webpack
+		raw loader https://github.com/webpack-contrib/raw-loader
+		*/
+
+
+		if(Platform.OS =='sketch')
+			return(
+				<Image
+					source={{uri: `https://rawgit.com/google/material-design-icons/master/navigation/1x_web/ic_${shape}_black_48dp.png`}}
+					style={{
+						width: 40,
+						height: 40,
+						resizeMode: 'contain'
+					}}
+					/>
+			);
+
+		if(Platform.OS =='web')
+			return(
+				<svg
+					style={{
+						width: 40,
+						height: 40,
+						resizeMode: 'contain',
+						fill: 'blue'
+					}}
+					>
+    				<use xlinkHref={`http://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_${shape}_48px.svg`}></use>
+  				</svg>
+
+			);
 	}
 }
 

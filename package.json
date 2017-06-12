@@ -27,6 +27,11 @@
     "react-primitives": "^0.4.2",
     "react-primitives-google-static-map": "^1.0.1",
     "react-sketchapp": "^0.10.0",
-    "react-test-renderer": "^15.4.1"
+    "react-test-renderer": "^15.4.1",
+    "grunt": "^0.4.0",
+    "grunt-svgmin": "^4.0.0",
+    "grunt-svgstore": "^1.0.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "feather-icons": "*"
   }
 }
