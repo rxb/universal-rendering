@@ -44,15 +44,10 @@ module.exports = function(grunt) {
 			options: {
 				plugins: [
 					{ removeDesc: true },
-					{ collapseGroups: true },
-					{ removeEmptyAttrs: true },
-					{ removeUselessStrokeAndFill: true },
 					{ removeViewbox: false },
-					{
-						removeAttrs: {
-							attrs: ['fill']
-						}
-					}
+					{ mergePaths: false },
+					{ convertShapeToPath: false },
+					{ removeAttrs: {attrs: '(stroke|fill|stroke-width)'} },
 				]
 			},
 			dist: {

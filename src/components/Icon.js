@@ -14,52 +14,17 @@ class Icon extends React.Component {
 		// to be able to tint this, even on web we need to use svgs not as a standard image
 		// would be nice to implement tintcolor from RN
 
-
-		/*
-
-		pick an icon set
-		https://github.com/colebemis/feather
-		feather-icons
-
-		https://github.com/sindresorhus/grunt-svgmin
-		https://github.com/FWeinb/grunt-svgstore
-
-		svgstore (makes a big sprite) https://github.com/svgstore/svgstore
-
-		grunt png colors or whatever
-		https://github.com/filamentgroup/directory-colorfy
-		https://github.com/domenic/svg2png
-
-		webpack
-		raw loader https://github.com/webpack-contrib/raw-loader
-		*/
-
-
 		if(Platform.OS =='sketch')
 			return(
-				<Image
-					source={{uri: `https://rawgit.com/google/material-design-icons/master/navigation/1x_web/ic_${shape}_black_48dp.png`}}
-					style={{
-						width: 40,
-						height: 40,
-						resizeMode: 'contain'
-					}}
-					/>
+				<View style={{borderWidth: 1, borderColor: 'gray', height: 24, width: 24}}>
+				</View>
 			);
 
 		if(Platform.OS =='web')
 			return(
-				<svg
-					style={{
-						width: 40,
-						height: 40,
-						resizeMode: 'contain',
-						fill: 'blue'
-					}}
-					>
-    				<use xlinkHref={`http://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_${shape}_48px.svg`}></use>
-  				</svg>
-
+				<svg className="icon" style={{height: 24, width: 24, stroke: 'gray', fill: 'none', strokeWidth: 1}}>
+					<use xlinkHref={`#icon-${shape}`} />
+				</svg>
 			);
 	}
 }

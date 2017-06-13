@@ -8303,7 +8303,7 @@ var Catalog = function Catalog() {
 				_react2['default'].createElement(
 					_Chunk2['default'],
 					null,
-					_react2['default'].createElement(_Icon2['default'], { shape: 'arrow_back' })
+					_react2['default'].createElement(_Icon2['default'], { shape: 'download-cloud' })
 				)
 			),
 			_react2['default'].createElement(
@@ -11060,39 +11060,12 @@ var Icon = function (_React$Component) {
 				// to be able to tint this, even on web we need to use svgs not as a standard image
 				// would be nice to implement tintcolor from RN
 
-
-				/*
-    	pick an icon set
-    https://github.com/colebemis/feather
-    feather-icons
-    	svgmin (svgo)
-    svgstore (makes a big sprite)
-    	grunt png colors or whatever
-    https://www.npmjs.com/package/grunt-svg2png-colorfy
-    	webpack
-    raw loader https://github.com/webpack-contrib/raw-loader
-    */
-
-				if (_reactPrimitives.Platform.OS == 'sketch') return _react2['default'].createElement(_reactPrimitives.Image, {
-					source: { uri: 'https://rawgit.com/google/material-design-icons/master/navigation/1x_web/ic_' + String(shape) + '_black_48dp.png' },
-					style: {
-						width: 40,
-						height: 40,
-						resizeMode: 'contain'
-					}
-				});
+				if (_reactPrimitives.Platform.OS == 'sketch') return _react2['default'].createElement(_reactPrimitives.View, { style: { borderWidth: 1, borderColor: 'gray', height: 24, width: 24 } });
 
 				if (_reactPrimitives.Platform.OS == 'web') return _react2['default'].createElement(
 					'svg',
-					{
-						style: {
-							width: 40,
-							height: 40,
-							resizeMode: 'contain',
-							fill: 'blue'
-						}
-					},
-					_react2['default'].createElement('use', { xlinkHref: 'http://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_' + String(shape) + '_48px.svg' })
+					{ className: 'icon', style: { height: 24, width: 24, stroke: 'gray', fill: 'none', strokeWidth: 1 } },
+					_react2['default'].createElement('use', { xlinkHref: '#icon-' + String(shape) })
 				);
 			}
 

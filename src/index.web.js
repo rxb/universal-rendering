@@ -3,9 +3,18 @@ import { render } from 'react-dom';
 import { StyleSheet } from 'react-primitives';
 import swatches from './styles/swatches';
 import Catalog from './Catalog';
+import iconSprite from 'raw-loader!../dist/sprite/sprite.inc';
 
 const Document = () => (
 	<div>
+
+		{/* icon sprite */}
+		<div
+			style={{display: 'none'}}
+			dangerouslySetInnerHTML={{ __html: iconSprite }}
+			>
+		</div>
+
 		{/* weird web-specific styling stuff you can't set any other way */}
 		<style dangerouslySetInnerHTML={{__html: `
 			.input::-webkit-input-placeholder{
@@ -16,6 +25,11 @@ const Document = () => (
 				outline: 0;
 			}
 		`}}></style>
+
+
+
+
+
 		<Catalog />
 	</div>
 )
