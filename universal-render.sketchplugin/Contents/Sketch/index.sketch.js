@@ -8303,7 +8303,30 @@ var Catalog = function Catalog() {
 				_react2['default'].createElement(
 					_Chunk2['default'],
 					null,
-					_react2['default'].createElement(_Icon2['default'], { shape: 'download-cloud' })
+					_react2['default'].createElement(
+						_Flex2['default'],
+						{ switchDirection: 'medium' },
+						_react2['default'].createElement(
+							_FlexItem2['default'],
+							{ shrink: true },
+							_react2['default'].createElement(_Icon2['default'], { shape: 'download-cloud' })
+						),
+						_react2['default'].createElement(
+							_FlexItem2['default'],
+							{ shrink: true },
+							_react2['default'].createElement(_Icon2['default'], { shape: 'sun' })
+						),
+						_react2['default'].createElement(
+							_FlexItem2['default'],
+							{ shrink: true },
+							_react2['default'].createElement(_Icon2['default'], { shape: 'trending-up' })
+						),
+						_react2['default'].createElement(
+							_FlexItem2['default'],
+							{ shrink: true },
+							_react2['default'].createElement(_Icon2['default'], { shape: 'feather' })
+						)
+					)
 				)
 			),
 			_react2['default'].createElement(

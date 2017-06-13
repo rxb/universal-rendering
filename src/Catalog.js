@@ -19,7 +19,20 @@ const Catalog = () => (
 		<Bounds>
 			<Section>
 				<Chunk>
-					<Icon shape='download-cloud' />
+					<Flex switchDirection="medium">
+						<FlexItem shrink>
+							<Icon shape='download-cloud' />
+						</FlexItem>
+						<FlexItem shrink>
+							<Icon shape='sun' />
+						</FlexItem>
+						<FlexItem shrink>
+							<Icon shape='trending-up' />
+						</FlexItem>
+						<FlexItem shrink>
+							<Icon shape='feather' />
+						</FlexItem>
+					</Flex>
 				</Chunk>
 			</Section>
 			<Section>
