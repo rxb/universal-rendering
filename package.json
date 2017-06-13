@@ -32,6 +32,7 @@
     "grunt-svgmin": "^4.0.0",
     "grunt-svgstore": "^1.0.0",
     "grunt-contrib-clean": "^1.1.0",
+    "grunt-convert-svg-to-png": "^1.1.0",
     "raw-loader": "^0.5.1",
     "feather-icons": "*"
   }

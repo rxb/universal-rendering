@@ -6,14 +6,14 @@ const space = base * .75;
 const spaceSection = base * 1.5;
 const flexGrowFactors = [1, 2, 3, 4, 5, 6, 7];
 const flexJustifyMap = {
-	"flexEnd": "flexEnd",
+	"flexEnd": "flex-end",
 	"center": "center",
-	"spaceBetween": "spaceBetween",
-	"spaceAround": "spaceAround"
+	"spaceBetween": "space-between",
+	"spaceAround": "space-around"
 };
 const flexAlignMap = {
-	"top": "flexStart",
-	"bottom": "flexEnd",
+	"top": "flex-start",
+	"bottom": "flex-end",
 	"center": "center"
 };
 const breakpointsMap = {
@@ -198,7 +198,7 @@ Class                   | Variants
 ...(()=>{
 	const justifyObj = {};
 	for( let jName in flexJustifyMap){
-		justifyObj[`flex--${jName}`] = { flexContent: flexJustifyMap[jName] };
+		justifyObj[`flex--${jName}`] = { justifyContent: flexJustifyMap[jName] };
 	}
 	return justifyObj;
 })(),
@@ -218,7 +218,7 @@ Class                   | Variants
 ...(()=>{
 	const alignObj = {};
 	for( let aName in flexAlignMap){
-		alignObj[`flex--align${capitalize(aName)}`] = { flexContent: flexAlignMap[aName] };
+		alignObj[`flex--align${capitalize(aName)}`] = { alignItems: flexAlignMap[aName] };
 	}
 	return alignObj;
 })(),
