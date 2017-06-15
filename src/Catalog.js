@@ -21,16 +21,16 @@ const Catalog = () => (
 				<Chunk>
 					<Flex switchDirection="medium">
 						<FlexItem shrink>
-							<Icon shape='download-cloud' />
+							<Icon shape='download-cloud' color="red" />
 						</FlexItem>
 						<FlexItem shrink>
-							<Icon shape='sun' />
+							<Icon shape='sun' color="green" />
 						</FlexItem>
 						<FlexItem shrink>
-							<Icon shape='trending-up' />
+							<Icon shape='trending-up' color="blue" />
 						</FlexItem>
 						<FlexItem shrink>
-							<Icon shape='feather' />
+							<Icon shape='feather' color="black" />
 						</FlexItem>
 					</Flex>
 				</Chunk>

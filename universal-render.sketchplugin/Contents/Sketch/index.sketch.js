@@ -8446,22 +8446,22 @@ var Catalog = function Catalog() {
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							{ shrink: true },
-							_react2['default'].createElement(_Icon2['default'], { shape: 'download-cloud' })
+							_react2['default'].createElement(_Icon2['default'], { shape: 'download-cloud', color: 'red' })
 						),
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							{ shrink: true },
-							_react2['default'].createElement(_Icon2['default'], { shape: 'sun' })
+							_react2['default'].createElement(_Icon2['default'], { shape: 'sun', color: 'green' })
 						),
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							{ shrink: true },
-							_react2['default'].createElement(_Icon2['default'], { shape: 'trending-up' })
+							_react2['default'].createElement(_Icon2['default'], { shape: 'trending-up', color: 'blue' })
 						),
 						_react2['default'].createElement(
 							_FlexItem2['default'],
 							{ shrink: true },
-							_react2['default'].createElement(_Icon2['default'], { shape: 'feather' })
+							_react2['default'].createElement(_Icon2['default'], { shape: 'feather', color: 'black' })
 						)
 					)
 				)
@@ -11213,18 +11213,27 @@ var Icon = function (_React$Component) {
 		value: function () {
 			function render() {
 				var _props = this.props,
+				    color = _props.color,
 				    size = _props.size,
 				    shape = _props.shape;
 
 				// sketch can't do SVG yet, so we need a PNG for them
 				// to be able to tint this, even on web we need to use svgs not as a standard image
 				// would be nice to implement tintcolor from RN
+				// simplest static web server https://gist.github.com/willurd/5720255
+				/*
+    convert glyphicons-halflings.png -alpha extract -background blue \
+    -alpha shape blue-glyphicons-halflings.png
+    */
 
-				if (_reactPrimitives.Platform.OS == 'sketch') return _react2['default'].createElement(_reactPrimitives.View, { style: { borderWidth: 1, borderColor: 'gray', height: 24, width: 24 } });
+				if (_reactPrimitives.Platform.OS == 'sketch') return _react2['default'].createElement(_reactPrimitives.Image, {
+					source: { uri: 'http://localhost:4000/' + String(shape) + '?color=' + String(color) },
+					style: { width: 24, height: 24 }
+				});
 
 				if (_reactPrimitives.Platform.OS == 'web') return _react2['default'].createElement(
 					'svg',
-					{ className: 'icon', style: { height: 24, width: 24, stroke: 'gray', fill: 'none', strokeWidth: 1 } },
+					{ className: 'icon', style: { height: 24, width: 24, stroke: color, fill: 'none', strokeWidth: 1 } },
 					_react2['default'].createElement('use', { xlinkHref: '#icon-' + String(shape) })
 				);
 			}
@@ -11237,7 +11246,8 @@ var Icon = function (_React$Component) {
 }(_react2['default'].Component);
 
 Icon.defaultProps = {
-	size: 'medium'
+	size: 'medium',
+	color: 'orange'
 };
 
 Icon.propTypes = {
@@ -11693,14 +11703,14 @@ var space = base * .75;
 var spaceSection = base * 1.5;
 var flexGrowFactors = [1, 2, 3, 4, 5, 6, 7];
 var flexJustifyMap = {
-	"flexEnd": "flexEnd",
+	"flexEnd": "flex-end",
 	"center": "center",
-	"spaceBetween": "spaceBetween",
-	"spaceAround": "spaceAround"
+	"spaceBetween": "space-between",
+	"spaceAround": "space-around"
 };
 var flexAlignMap = {
-	"top": "flexStart",
-	"bottom": "flexEnd",
+	"top": "flex-start",
+	"bottom": "flex-end",
 	"center": "center"
 };
 var breakpointsMap = {
@@ -11863,13 +11873,13 @@ var styles = _reactPrimitives.StyleSheet.create(Object.assign({
 }, function () {
 	var justifyObj = {};
 	for (var jName in flexJustifyMap) {
-		justifyObj["flex--" + jName] = { flexContent: flexJustifyMap[jName] };
+		justifyObj["flex--" + jName] = { justifyContent: flexJustifyMap[jName] };
 	}
 	return justifyObj;
 }(), function () {
 	var alignObj = {};
 	for (var aName in flexAlignMap) {
-		alignObj["flex--align" + String(capitalize(aName))] = { flexContent: flexAlignMap[aName] };
+		alignObj["flex--align" + String(capitalize(aName))] = { alignItems: flexAlignMap[aName] };
 	}
 	return alignObj;
 }()));

@@ -1,4 +1,5 @@
 module.exports = {
+	type: 'react-app',
 	webpack: {
 		module: {
 			rules: [{
