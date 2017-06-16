@@ -15,6 +15,16 @@ import TextInput from './components/TextInput';
 
 
 const Catalog = () => (
+	<View>
+	<Stripe image="https://lorempixel.com/600/400/nature/" style={{minHeight: 250}}>
+		<Bounds>
+			<Section>
+				<Chunk>
+
+				</Chunk>
+			</Section>
+		</Bounds>
+	</Stripe>
 	<Stripe>
 		<Bounds>
 			<Section>
@@ -60,17 +70,17 @@ const Catalog = () => (
 				<Flex direction="column" switchDirection="atMedium">
 					<FlexItem>
 						<Chunk>
-							<DumbButton label="1" />
+							<DumbButton label="Upload" shape='upload-cloud' />
 						</Chunk>
 					</FlexItem>
 					<FlexItem growFactor={2}>
 						<Chunk>
-							<DumbButton label="2" />
+							<DumbButton label="Download" shape='download-cloud' />
 						</Chunk>
 					</FlexItem>
 					<FlexItem>
 						<Chunk>
-							<DumbButton label="3" />
+							<DumbButton label="Get crazy" shape='zap' />
 						</Chunk>
 					</FlexItem>
 				</Flex>
@@ -101,6 +111,7 @@ const Catalog = () => (
 			</Section>
 		</Bounds>
 	</Stripe>
+	</View>
 );
 
 export default Catalog;

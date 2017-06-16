@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
 		backgroundColor: 'purple',
 		padding: space,
 		borderRadius: 5,
+		flexDirection: 'row',
+		justifyContent: 'center'
 	},
 	buttonText: {
 		color: '#ffffff',
