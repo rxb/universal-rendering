@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
 	var DIST = 'dist/',
 		DIST_OPTIMIZED = `${DIST}optimized/`,
-		DIST_PNG = `${DIST}png/`,
+		DIST_PNG = `public/`,
 		DIST_SPRITE = `${DIST}sprite/`;
 
 
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 					{ removeViewbox: false },
 					{ mergePaths: false },
 					{ convertShapeToPath: false },
-					{ removeAttrs: {attrs: '(stroke|stroke-width)'} },
+					{ removeAttrs: {attrs: '(stroke)'} },
 				]
 			},
 			dist: {

@@ -14,11 +14,6 @@ class Icon extends React.Component {
 		// sketch can't do SVG yet, so we need a PNG for them
 		// to be able to tint this, even on web we need to use svgs not as a standard image
 		// would be nice to implement tintcolor from RN
-		// simplest static web server https://gist.github.com/willurd/5720255
-		/*
-		convert glyphicons-halflings.png -alpha extract -background blue \
--alpha shape blue-glyphicons-halflings.png
-		*/
 
 		if(Platform.OS =='sketch')
 			return(
@@ -30,7 +25,7 @@ class Icon extends React.Component {
 
 		if(Platform.OS =='web')
 			return(
-				<svg className="icon" style={{height: 24, width: 24, stroke: color, fill: 'none', strokeWidth: 1}}>
+				<svg className="icon" style={{height: 24, width: 24, stroke: color, fill: 'none'}}>
 					<use xlinkHref={`#icon-${shape}`} />
 				</svg>
 			);
