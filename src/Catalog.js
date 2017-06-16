@@ -12,15 +12,25 @@ import FlexItem from './components/FlexItem';
 import Avatar from './components/Avatar';
 import Icon from './components/Icon';
 import TextInput from './components/TextInput';
+import List from './components/List';
 
+
+const people = [
+	{name: 'Sally Somebody'},
+	{name: 'Norman Nobody'},
+	{name: 'Evan Everybody'},
+	{name: 'Walt Whatever'},
+	{name: 'Fred Fakeperson'},
+	{name: 'Andy Avatar'}
+]
 
 const Catalog = () => (
 	<View>
-	<Stripe image="https://lorempixel.com/600/400/nature/" style={{minHeight: 250}}>
+	<Stripe image="https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg" style={{minHeight: 250}}>
 		<Bounds>
 			<Section>
 				<Chunk>
-
+					{/* some stuff? */}
 				</Chunk>
 			</Section>
 		</Bounds>
@@ -87,19 +97,39 @@ const Catalog = () => (
 			</Section>
 
 			<Section>
-				<Flex>
-					<FlexItem shrink>
-						<Chunk>
-							<Avatar source={{uri: 'https://randomuser.me/api/portraits/women/2.jpg'}} />
-						</Chunk>
-					</FlexItem>
-					<FlexItem>
-						<Chunk>
-							<Text style={[styles.text, styles.textStrong]}>Sally Smeetup</Text>
-							<Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-						</Chunk>
-					</FlexItem>
-				</Flex>
+
+				{/*
+					Types of lists
+
+					linear list
+					inline block list, limit max rows
+					hscroll inline block list
+					gridlist
+
+				*/}
+
+				<List
+					variant=''
+					items={people}
+					renderItem={(item, i)=>{
+						return(
+							<Flex>
+								<FlexItem shrink>
+									<Chunk>
+										<Avatar source={{uri: `https://randomuser.me/api/portraits/women/${i}.jpg`}} />
+									</Chunk>
+								</FlexItem>
+								<FlexItem>
+									<Chunk>
+										<Text style={[styles.text, styles.textStrong]}>{item.name}</Text>
+										<Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+									</Chunk>
+								</FlexItem>
+							</Flex>
+						);
+					}}
+					/>
+
 			</Section>
 			<Section>
 				<Chunk>

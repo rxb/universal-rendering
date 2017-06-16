@@ -45,10 +45,57 @@ const styles = StyleSheet.create({
 		paddingBottom: space
 	},
 
+
+	// LISTS
+	// react-sketchapp lists other than default depend on yoga https://github.com/airbnb/react-sketchapp/issues/52
+
+	// default
+	list:{
+
+	},
+	'list-item': {
+		borderTopWidth: 1,
+		borderTopColor: '#ddd',
+		paddingTop: space
+	},
+
+	// grid
+
+	'list--grid':{
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
+	'list-item--grid': {
+		flexBasis: '50%'
+	},
+
+	// inline
+	'list--inline':{
+		flexDirection: 'row',
+		flexWrap: 'nowrap',
+		overflow: 'scroll',
+		WebkitOverflowScrolling: 'touch',
+	},
+	'list-item--inline': {
+		flexBasis: 200
+	},
+
+	// hscroll
+	'list--hscroll':{
+		flexDirection: 'row',
+		flexWrap: 'nowrap',
+		overflowY: 'scroll',
+		WebkitOverflowScrolling: 'touch',
+	},
+	'list-item--hscroll': {
+		flexBasis: 200
+	},
+
+
 	// INPUT
 	input: {
 		backgroundColor: '#eeeeee',
-		padding: space,
+		padding: space * 1.5,
 		borderRadius: 5,
 		borderWidth: 0,
 		color: swatches.textPrimary
@@ -60,8 +107,8 @@ const styles = StyleSheet.create({
 
 	// BUTTON
 	button: {
-		backgroundColor: 'purple',
-		padding: space,
+		backgroundColor: '#1D7CF2',
+		padding: space*1.5,
 		borderRadius: 5,
 		flexDirection: 'row',
 		justifyContent: 'center'
