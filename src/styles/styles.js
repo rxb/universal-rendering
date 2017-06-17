@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
 		padding: space * 1.5,
 		borderRadius: 5,
 		borderWidth: 0,
-		color: swatches.textPrimary
+		color: swatches.textPrimary,
+		boxSizing: 'border-box',
+		appearance: 'none'
 	},
 	'input--multiline': {
 		minHeight: base * 6

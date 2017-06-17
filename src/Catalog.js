@@ -12,6 +12,7 @@ import FlexItem from './components/FlexItem';
 import Avatar from './components/Avatar';
 import Icon from './components/Icon';
 import TextInput from './components/TextInput';
+import Picker from './components/Picker';
 import List from './components/List';
 import Card from './components/Card';
 
@@ -147,6 +148,15 @@ const Catalog = () => (
 
 			</Section>
 			<Section>
+				<Chunk>
+					<Picker style={[styles.input, styles.text]}>
+						{ (['one', 'two', 'three', 'four']).map((item, i)=>{
+							return(
+								<Picker.Item value={item} label={item} />
+							);
+						}) }
+					</Picker>
+				</Chunk>
 				<Chunk>
 					<TextInput placeholder="Hey I'm a text input" />
 				</Chunk>

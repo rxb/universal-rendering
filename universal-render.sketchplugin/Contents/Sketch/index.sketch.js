@@ -576,7 +576,9 @@ var styles = _reactPrimitives.StyleSheet.create({
 		padding: space * 1.5,
 		borderRadius: 5,
 		borderWidth: 0,
-		color: _swatches2['default'].textPrimary
+		color: _swatches2['default'].textPrimary,
+		boxSizing: 'border-box',
+		appearance: 'none'
 	},
 	'input--multiline': {
 		minHeight: base * 6
@@ -8543,6 +8545,10 @@ var _TextInput = __webpack_require__(110);
 
 var _TextInput2 = _interopRequireDefault(_TextInput);
 
+var _Picker = __webpack_require__(191);
+
+var _Picker2 = _interopRequireDefault(_Picker);
+
 var _List = __webpack_require__(107);
 
 var _List2 = _interopRequireDefault(_List);
@@ -8771,6 +8777,17 @@ var Catalog = function Catalog() {
 				_react2['default'].createElement(
 					_Section2['default'],
 					null,
+					_react2['default'].createElement(
+						_Chunk2['default'],
+						null,
+						_react2['default'].createElement(
+							_Picker2['default'],
+							{ style: [_styles2['default'].input, _styles2['default'].text] },
+							['one', 'two', 'three', 'four'].map(function (item, i) {
+								return _react2['default'].createElement(_Picker2['default'].Item, { value: item, label: item });
+							})
+						)
+					),
 					_react2['default'].createElement(
 						_Chunk2['default'],
 						null,
@@ -21002,6 +21019,76 @@ var Card = function (_React$Component) {
 }(_react2['default'].Component);
 
 exports['default'] = Card;
+module.exports = exports['default'];
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(5);
+
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Picker = function (_React$Component) {
+	_inherits(Picker, _React$Component);
+
+	function Picker() {
+		_classCallCheck(this, Picker);
+
+		return _possibleConstructorReturn(this, (Picker.__proto__ || Object.getPrototypeOf(Picker)).apply(this, arguments));
+	}
+
+	_createClass(Picker, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var multiline = this.props.multiline;
+
+
+				return _react2['default'].createElement(
+					_reactPrimitives.View,
+					{ style: [_styles2['default'].input, multiline ? _styles2['default']['input--multiline'] : {}] },
+					this.props.placeholder && _react2['default'].createElement(
+						_reactPrimitives.Text,
+						{ style: [_styles2['default'].text] },
+						this.props.placeholder
+					)
+				);
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Picker;
+}(_react2['default'].Component);
+
+// Don't need no items in sketch
+
+
+Picker.Item = function () {};
+
+exports['default'] = Picker;
 module.exports = exports['default'];
 
 /***/ })

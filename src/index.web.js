@@ -17,6 +17,7 @@ const Document = () => (
 
 		{/* weird web-specific styling stuff you can't set any other way */}
 		<style dangerouslySetInnerHTML={{__html: `
+
 			.input::-webkit-input-placeholder{
 				color: ${swatches.textHint};
 			}
