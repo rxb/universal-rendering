@@ -13,6 +13,7 @@ import Avatar from './components/Avatar';
 import Icon from './components/Icon';
 import TextInput from './components/TextInput';
 import List from './components/List';
+import Card from './components/Card';
 
 
 const people = [
@@ -97,14 +98,28 @@ const Catalog = () => (
 			</Section>
 
 			<Section>
+				<Card>
+					<Section style={{alignItems: 'center'}}>
+						<Chunk>
+							<Avatar
+								size='large'
+								source={{uri: 'https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg'}}
+								/>
+						</Chunk>
+						<Chunk>
+							<Text style={[styles.text]}>Oh look it's a card</Text>
+						</Chunk>
+					</Section>
+				</Card>
+			</Section>
+
+			<Section>
 
 				{/*
-					Types of lists
-
-					linear list
-					inline block list, limit max rows
-					hscroll inline block list
-					gridlist
+					- 			linear list
+					inline	 	inline block list
+					hscroll 	scrolling inline block list
+					grid		grid list
 
 				*/}
 

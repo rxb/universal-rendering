@@ -9,25 +9,6 @@ const spaceSection = base * 1.5;
 
 const styles = StyleSheet.create({
 
-	/*
-	##################################################################################
-	CSS NOTES
-	##################################################################################
-
-	Media queries and pseudoelements should be nested inside a style.
-
-		thing: {
-			color: 'blue',
-			'@media (min-width: 600px)': {
-				color: 'red'
-			}
-		}
-
-	Media queries and pseudoelements are currently ignored in react-sketchapp.
-
-	Forget about ANY cascading, even setting fontFamily in <body>. Fully style each element. For example, styles.text has the base text styling.
-	*/
-
 
 	// LAYOUT
 	stripe: {
@@ -118,6 +99,13 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 
+	// CARD
+	card: {
+		borderRadius: 5,
+		shadowRadius: 12,
+		shadowColor: 'rgba(0,0,0,.25)'
+	},
+
 	// AVATAR
 	avatar: {
 		resizeMode: 'cover',
@@ -132,7 +120,7 @@ const styles = StyleSheet.create({
 		height: 36,
 		borderRadius: 18
 	},
-	'avatar--big':{
+	'avatar--large':{
 		width: 120,
 		height: 120,
 		borderRadius: 60
@@ -144,14 +132,8 @@ const styles = StyleSheet.create({
 		fontFamily: 'Helvetica',
 		fontWeight: '400',
 		color: swatches.textPrimary,
-
-		// retina/non-retina rendering
-		WebkitFontSmoothing: 'antialiased',
-		/*
-		'@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and ( min-device-pixel-ratio: 1.25), only screen and ( min-resolution: 200dpi), only screen and ( min-resolution: 1.25dppx)':  {
-				WebkitFontSmoothing: 'subpixel-antialiased'
-		}
-		*/
+		lineHeight: base * 1.4,
+		WebkitFontSmoothing: 'antialiased', // retina/non-retina rendering
 	},
 	textSecondary:{
 		color: swatches.textSecondary

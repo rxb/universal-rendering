@@ -1,26 +1,33 @@
 import React from 'react';
 import { StyleSheet } from 'react-primitives';
+import { TextInput as TextInputWeb } from 'react-native-web';
 import styles from '../styles/styles';
 
-class TextInput extends React.Component {
+
+class TextInput extends React.Component{
 	render() {
 		const {
 			multiline,
+			placeholder,
 			type
 		} = this.props;
 
-		// auto-stylesheet stuff doesn't work on DOM nodes
-		// so it looks like we have to inline for now with StyleSheet.flatten
-		// maybe react-style-syntax has some helpers
-
-		if (type || !multiline)
-			return (<input type="type" style={StyleSheet.flatten([styles.input, styles.text])} className="input" placeholder={this.props.placeholder} />
-			);
-
-		if (multiline)
-			return( <textarea style={StyleSheet.flatten([styles.input, styles['input--multiline'], styles.text])} className="input" placeholder={this.props.placeholder}></textarea>
-			);
+		return (
+			<TextInputWeb
+				accessibilityLabel={placeholder}
+				maxNumberOfLines={5}
+				multiline={multiline}
+				placeholder={placeholder}
+				className='input'
+				style={[
+					styles.input,
+					multiline && styles['input--multiline'],
+					styles.text
+				]}
+				/>
+		);
 	}
 }
+
 
 export default TextInput;
