@@ -1,20 +1,23 @@
 import React from 'react';
 import { View } from 'react-primitives';
 import styles from '../styles/styles';
+import Link from './Link';
 
-const Chunk = (props) => {
+const Menu = (props) => {
+
 	const {
 		children,
-		style,
 		...other
 	} = props;
 
 	return(
-		<View style={[styles.chunk, style]}>
+		<Touchable
+			{...other}
+			>
 			{children}
-		</View>
+		</Touchable>
 	);
 }
 
 
-export default Chunk;
+export default Menu;

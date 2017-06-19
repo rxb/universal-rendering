@@ -15,6 +15,7 @@ import TextInput from './components/TextInput';
 import Picker from './components/Picker';
 import List from './components/List';
 import Card from './components/Card';
+import Link from './components/Link';
 
 
 const people = [
@@ -26,147 +27,181 @@ const people = [
 	{name: 'Andy Avatar'}
 ]
 
-const Catalog = () => (
-	<View>
-	<Stripe image="https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg" style={{minHeight: 250}}>
-		<Bounds>
-			<Section>
-				<Chunk>
-					{/* some stuff? */}
-				</Chunk>
-			</Section>
-		</Bounds>
-	</Stripe>
-	<Stripe>
-		<Bounds>
-			<Section>
-				<Chunk>
-					<Flex switchDirection="medium">
-						<FlexItem shrink>
-							<Icon shape='download-cloud' color="red" />
-						</FlexItem>
-						<FlexItem shrink>
-							<Icon shape='sun' color="green" />
-						</FlexItem>
-						<FlexItem shrink>
-							<Icon shape='trending-up' color="blue" />
-						</FlexItem>
-						<FlexItem shrink>
-							<Icon shape='feather' color="black" />
-						</FlexItem>
-					</Flex>
-				</Chunk>
-			</Section>
-			<Section>
-				<Chunk>
-					<Text style={[styles.text, styles.textPageHead]}>Here we go!</Text>
-				</Chunk>
-				<Chunk>
-					<Text style={styles.text}>Please work</Text>
-					<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
-				</Chunk>
-			</Section>
-			<Section>
-				<Flex switchDirection="medium">
-					<FlexItem>
-						<Chunk>
-							<DumbButton label="Do it" />
-						</Chunk>
-					</FlexItem>
-					<FlexItem>
-						<Chunk>
-							<DumbButton label="Don't do it" />
-						</Chunk>
-					</FlexItem>
-				</Flex>
-				<Flex direction="column" switchDirection="atMedium">
-					<FlexItem>
-						<Chunk>
-							<DumbButton label="Upload" shape='upload-cloud' />
-						</Chunk>
-					</FlexItem>
-					<FlexItem growFactor={2}>
-						<Chunk>
-							<DumbButton label="Download" shape='download-cloud' />
-						</Chunk>
-					</FlexItem>
-					<FlexItem>
-						<Chunk>
-							<DumbButton label="Get crazy" shape='zap' />
-						</Chunk>
-					</FlexItem>
-				</Flex>
-			</Section>
+class Catalog extends React.Component {
 
-			<Section>
-				<Card>
-					<Section style={{alignItems: 'center'}}>
-						<Chunk>
-							<Avatar
-								size='large'
-								source={{uri: 'https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg'}}
-								/>
-						</Chunk>
-						<Chunk>
-							<Text style={[styles.text]}>Oh look it's a card</Text>
-						</Chunk>
-					</Section>
-				</Card>
-			</Section>
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedPerson: 0
+		}
+	}
 
-			<Section>
+	render() {
+		return(
 
-				{/*
-					- 			linear list
-					inline	 	inline block list
-					hscroll 	scrolling inline block list
-					grid		grid list
-
-				*/}
-
-				<List
-					variant=''
-					items={people}
-					renderItem={(item, i)=>{
-						return(
-							<Flex>
-								<FlexItem shrink>
+			<View>
+				<Stripe image="https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg" style={{minHeight: 250}}>
+					<Bounds>
+						<Section>
+							<Chunk>
+								{/* some stuff? */}
+							</Chunk>
+						</Section>
+					</Bounds>
+				</Stripe>
+				<Stripe>
+					<Bounds>
+						<Section>
+							<Chunk>
+								<Flex switchDirection="medium">
+									<FlexItem shrink>
+										<Icon shape='download-cloud' color="red" />
+									</FlexItem>
+									<FlexItem shrink>
+										<Icon shape='sun' color="green" />
+									</FlexItem>
+									<FlexItem shrink>
+										<Icon shape='trending-up' color="blue" />
+									</FlexItem>
+									<FlexItem shrink>
+										<Icon shape='feather' color="black" />
+									</FlexItem>
+								</Flex>
+							</Chunk>
+						</Section>
+						<Section>
+							<Chunk>
+								<Text style={[styles.text, styles.textPageHead]}>Here we go!</Text>
+							</Chunk>
+							<Chunk>
+								<Text style={styles.text}>Please work</Text>
+								<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
+							</Chunk>
+						</Section>
+						<Section>
+							<Flex switchDirection="medium">
+								<FlexItem>
 									<Chunk>
-										<Avatar source={{uri: `https://randomuser.me/api/portraits/women/${i}.jpg`}} />
+										<DumbButton label="Do it" />
 									</Chunk>
 								</FlexItem>
 								<FlexItem>
 									<Chunk>
-										<Text style={[styles.text, styles.textStrong]}>{item.name}</Text>
-										<Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+										<DumbButton label="Don't do it" />
 									</Chunk>
 								</FlexItem>
 							</Flex>
-						);
-					}}
-					/>
+							<Flex direction="column" switchDirection="atMedium">
+								<FlexItem>
+									<Chunk>
+										<DumbButton label="Upload" shape='upload-cloud' />
+									</Chunk>
+								</FlexItem>
+								<FlexItem growFactor={2}>
+									<Chunk>
+										<DumbButton label="Download" shape='download-cloud' />
+									</Chunk>
+								</FlexItem>
+								<FlexItem>
+									<Chunk>
+										<DumbButton label="Get crazy" shape='zap' />
+									</Chunk>
+								</FlexItem>
+							</Flex>
+						</Section>
 
-			</Section>
-			<Section>
-				<Chunk>
-					<Picker style={[styles.input, styles.text]}>
-						{ (['one', 'two', 'three', 'four']).map((item, i)=>{
-							return(
-								<Picker.Item value={item} label={item} />
-							);
-						}) }
-					</Picker>
-				</Chunk>
-				<Chunk>
-					<TextInput placeholder="Hey I'm a text input" />
-				</Chunk>
-				<Chunk>
-					<TextInput multiline placeholder="Hey I'm a multiline text input (aka textarea)" />
-				</Chunk>
-			</Section>
-		</Bounds>
-	</Stripe>
-	</View>
-);
+						<Section>
+							<Card>
+								<Section style={{alignItems: 'center'}}>
+									<Chunk>
+										<Avatar
+											size='large'
+											source={{uri: `https://randomuser.me/api/portraits/women/${this.state.selectedPerson}.jpg`}}
+											/>
+									</Chunk>
+									<Chunk>
+										<Text style={[styles.text]}>Oh look it's a card</Text>
+									</Chunk>
+								</Section>
+							</Card>
+						</Section>
+
+						<Section>
+
+							{/*
+								- 			linear list
+								inline	 	inline block list
+								hscroll 	scrolling inline block list
+								grid		grid list
+
+							*/}
+
+							<List
+								variant=''
+								items={people}
+								renderItem={(item, i)=>{
+									return(
+										<Flex>
+											<FlexItem shrink>
+												<Chunk>
+													<Avatar source={{uri: `https://randomuser.me/api/portraits/women/${i}.jpg`}} />
+												</Chunk>
+											</FlexItem>
+											<FlexItem>
+												<Chunk>
+													<Link
+														onPress={()=>{
+															this.setState({selectedPerson: i})
+														}}>
+														<View>
+														<Text style={[styles.text, styles.textStrong]}>{item.name}</Text>
+														<Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+														</View>
+													</Link>
+												</Chunk>
+											</FlexItem>
+											<FlexItem shrink>
+												<Link
+													onPress={()=>{
+														alert(`Hey, ${item.name}!`);
+													}}>
+														<Icon shape='more-vertical' color="gray" />
+												</Link>
+											</FlexItem>
+										</Flex>
+									);
+								}}
+								/>
+
+						</Section>
+						<Section>
+							<Chunk>
+								<Picker style={[styles.input, styles.text]}>
+									{ (['option one', 'option two', 'option three', 'option four']).map((item, i)=>{
+										return(
+											<Picker.Item value={item} label={item} />
+										);
+									}) }
+								</Picker>
+							</Chunk>
+							<Chunk>
+								<TextInput
+									placeholder="Hey I'm a text input"
+									/>
+							</Chunk>
+							<Chunk>
+								<TextInput
+									multiline
+									placeholder="Hey I'm a multiline text input (aka textarea)"
+									/>
+							</Chunk>
+						</Section>
+					</Bounds>
+				</Stripe>
+			</View>
+
+		);
+	}
+};
 
 export default Catalog;
