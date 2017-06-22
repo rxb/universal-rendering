@@ -119,7 +119,11 @@ const styles = StyleSheet.create({
 	},
 	'tabItem--selected': {
 		borderBottomColor: 'blue',
-		borderBottomWidth: 2,
+		borderBottomWidth: 3,
+	},
+	'tabText--selected': {
+		fontWeight: 700,
+		color: 'blue'
 	},
 
 	// MODAL

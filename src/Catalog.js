@@ -138,7 +138,18 @@ class Catalog extends React.Component {
 						<Section>
 
 							<Chunk>
-								<Tabs tabs={['one', 'two', 'three']} />
+								<Tabs
+									onChange={(tabValue)=>{
+										this.setState({
+											tabValue: tabValue
+										})
+									}}
+									selectedValue={this.state.tabValue}
+									>
+									<Tabs.Item value="one" label="One" />
+									<Tabs.Item value="two" label="Two" />
+									<Tabs.Item value="three" label="Three" />
+								</Tabs>
 							</Chunk>
 
 							{/*
