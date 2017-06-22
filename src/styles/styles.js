@@ -105,7 +105,38 @@ const styles = StyleSheet.create({
 	card: {
 		borderRadius: 5,
 		shadowRadius: 12,
-		shadowColor: 'rgba(0,0,0,.25)'
+		shadowColor: 'rgba(0,0,0,.25)',
+		backgroundColor: 'white',
+	},
+
+	// TABS
+	tabs: {
+		flexDirection: 'row',
+	},
+	tabItem: {
+		flex: 0,
+		marginRight: space,
+	},
+	'tabItem--selected': {
+		borderBottomColor: 'blue',
+		borderBottomWidth: 2,
+	},
+
+	// MODAL
+	'modal-backdrop': {
+		position: 'fixed',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		backgroundColor: 'rgba(0,0,0,.75)'
+	},
+	modal: {
+		position: 'fixed',
+		top: space*2,
+		left: space*2,
+		right: space*2,
+		bottom: space*2
 	},
 
 	// AVATAR
@@ -131,7 +162,7 @@ const styles = StyleSheet.create({
 	// TEXT
 	text: {
 		fontSize: base,
-		fontFamily: 'Helvetica',
+		fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
 		fontWeight: '400',
 		color: swatches.textPrimary,
 		lineHeight: base * 1.4,
@@ -151,15 +182,15 @@ const styles = StyleSheet.create({
 	},
 	textBig: {
 		fontSize: base * 1.375,
-		fontWeight: '900'
+		fontWeight: '800'
 	},
 	textSectionHead: {
 		fontSize: base * 1.125,
-		fontWeight: '900'
+		fontWeight: '800'
 	},
 	textPageHead: {
 		fontSize: base * 2,
-		fontWeight: '900'
+		fontWeight: '800'
 	}
 });
 

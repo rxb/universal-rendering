@@ -601,7 +601,38 @@ var styles = _reactPrimitives.StyleSheet.create({
 	card: {
 		borderRadius: 5,
 		shadowRadius: 12,
-		shadowColor: 'rgba(0,0,0,.25)'
+		shadowColor: 'rgba(0,0,0,.25)',
+		backgroundColor: 'white'
+	},
+
+	// TABS
+	tabs: {
+		flexDirection: 'row'
+	},
+	tabItem: {
+		flex: 0,
+		marginRight: space
+	},
+	'tabItem--selected': {
+		borderBottomColor: 'blue',
+		borderBottomWidth: 2
+	},
+
+	// MODAL
+	'modal-backdrop': {
+		position: 'fixed',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		backgroundColor: 'rgba(0,0,0,.75)'
+	},
+	modal: {
+		position: 'fixed',
+		top: space * 2,
+		left: space * 2,
+		right: space * 2,
+		bottom: space * 2
 	},
 
 	// AVATAR
@@ -627,7 +658,7 @@ var styles = _reactPrimitives.StyleSheet.create({
 	// TEXT
 	text: {
 		fontSize: base,
-		fontFamily: 'Helvetica',
+		fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
 		fontWeight: '400',
 		color: _swatches2['default'].textPrimary,
 		lineHeight: base * 1.4,
@@ -647,15 +678,15 @@ var styles = _reactPrimitives.StyleSheet.create({
 	},
 	textBig: {
 		fontSize: base * 1.375,
-		fontWeight: '900'
+		fontWeight: '800'
 	},
 	textSectionHead: {
 		fontSize: base * 1.125,
-		fontWeight: '900'
+		fontWeight: '800'
 	},
 	textPageHead: {
 		fontSize: base * 2,
-		fontWeight: '900'
+		fontWeight: '800'
 	}
 });
 
@@ -8559,9 +8590,17 @@ var _Card = __webpack_require__(190);
 
 var _Card2 = _interopRequireDefault(_Card);
 
+var _Tabs = __webpack_require__(194);
+
+var _Tabs2 = _interopRequireDefault(_Tabs);
+
 var _Link = __webpack_require__(192);
 
 var _Link2 = _interopRequireDefault(_Link);
+
+var _Modal = __webpack_require__(193);
+
+var _Modal2 = _interopRequireDefault(_Modal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -8582,7 +8621,8 @@ var Catalog = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Catalog.__proto__ || Object.getPrototypeOf(Catalog)).call(this, props));
 
 		_this.state = {
-			selectedPerson: 0
+			selectedPerson: 0,
+			showModal: false
 		};
 		return _this;
 	}
@@ -8686,7 +8726,18 @@ var Catalog = function (_React$Component) {
 										_react2['default'].createElement(
 											_Chunk2['default'],
 											null,
-											_react2['default'].createElement(_DumbButton2['default'], { label: 'Do it' })
+											_react2['default'].createElement(
+												_Link2['default'],
+												{
+													onPress: function () {
+														function onPress() {
+															_this2.setState({ showModal: !_this2.state.showModal });
+														}
+
+														return onPress;
+													}() },
+												_react2['default'].createElement(_DumbButton2['default'], { label: 'Do it' })
+											)
 										)
 									),
 									_react2['default'].createElement(
@@ -8763,6 +8814,11 @@ var Catalog = function (_React$Component) {
 							_react2['default'].createElement(
 								_Section2['default'],
 								null,
+								_react2['default'].createElement(
+									_Chunk2['default'],
+									null,
+									_react2['default'].createElement(_Tabs2['default'], { tabs: ['one', 'two', 'three'] })
+								),
 								_react2['default'].createElement(_List2['default'], {
 									variant: '',
 									items: people,
@@ -8864,6 +8920,61 @@ var Catalog = function (_React$Component) {
 										multiline: true,
 										placeholder: 'Hey I\'m a multiline text input (aka textarea)'
 									})
+								)
+							)
+						)
+					),
+					_react2['default'].createElement(
+						_Modal2['default'],
+						{
+							visible: this.state.showModal,
+							onRequestClose: function () {
+								function onRequestClose() {
+									return _this2.setState({ showModal: false });
+								}
+
+								return onRequestClose;
+							}()
+						},
+						_react2['default'].createElement(
+							_Section2['default'],
+							null,
+							_react2['default'].createElement(
+								_Chunk2['default'],
+								null,
+								_react2['default'].createElement(
+									_reactPrimitives.Text,
+									{ style: [_styles2['default'].text, _styles2['default'].textPageHead] },
+									'Modal'
+								)
+							),
+							_react2['default'].createElement(
+								_Chunk2['default'],
+								null,
+								_react2['default'].createElement(
+									_reactPrimitives.Text,
+									{ style: [_styles2['default'].text] },
+									'Hey y\'all I\'m a modal'
+								)
+							)
+						),
+						_react2['default'].createElement(
+							_Section2['default'],
+							null,
+							_react2['default'].createElement(
+								_Chunk2['default'],
+								null,
+								_react2['default'].createElement(
+									_Link2['default'],
+									{
+										onPress: function () {
+											function onPress() {
+												_this2.setState({ showModal: false });
+											}
+
+											return onPress;
+										}() },
+									_react2['default'].createElement(_DumbButton2['default'], { label: 'Let\'s do this' })
 								)
 							)
 						)
@@ -21107,6 +21218,234 @@ var Link = function Link(props) {
 };
 
 exports['default'] = Link;
+module.exports = exports['default'];
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(5);
+
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+var _Card = __webpack_require__(190);
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _Link = __webpack_require__(192);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+var _Icon = __webpack_require__(56);
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+var _Section = __webpack_require__(108);
+
+var _Section2 = _interopRequireDefault(_Section);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/*
+
+how to hide/show?
+a prop?
+a method?
+(i'm guessing a prop but who knows)
+
+how to hide/remove an element with animations
+layoutanimation vs csstransitiongroup (is there a way to code-split this?)
+animated is cross-platform
+but how do you animate something that has been removed?
+
+i think the basic idea for modal is
+don't directly change the thing that renders it
+request to dismiss it
+and change that value after the animation runs
+
+*/
+
+var Modal = function (_React$Component) {
+	_inherits(Modal, _React$Component);
+
+	function Modal(props) {
+		_classCallCheck(this, Modal);
+
+		return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+	}
+
+	_createClass(Modal, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var _props = this.props,
+				    children = _props.children,
+				    onRequestClose = _props.onRequestClose,
+				    visible = _props.visible,
+				    other = _objectWithoutProperties(_props, ['children', 'onRequestClose', 'visible']);
+
+				if (visible) {
+					return _react2['default'].createElement(
+						_reactPrimitives.View,
+						null,
+						_react2['default'].createElement(
+							_Link2['default'],
+							{
+								onPress: onRequestClose },
+							_react2['default'].createElement(_reactPrimitives.View, { style: [_styles2['default']['modal-backdrop']] })
+						),
+						_react2['default'].createElement(
+							_Card2['default'],
+							{ style: [_styles2['default'].modal] },
+							_react2['default'].createElement(
+								_Section2['default'],
+								null,
+								_react2['default'].createElement(
+									_Link2['default'],
+									{
+										onPress: onRequestClose },
+									_react2['default'].createElement(_Icon2['default'], { shape: 'x', color: 'gray', size: 'large' })
+								)
+							),
+							children
+						)
+					);
+				} else {
+					return false;
+				}
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Modal;
+}(_react2['default'].Component);
+
+exports['default'] = Modal;
+module.exports = exports['default'];
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactPrimitives = __webpack_require__(5);
+
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+var _Link = __webpack_require__(192);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Tabs = function (_React$Component) {
+	_inherits(Tabs, _React$Component);
+
+	function Tabs(props) {
+		_classCallCheck(this, Tabs);
+
+		var _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
+
+		_this.state = {
+			selected: 1
+		};
+		return _this;
+	}
+
+	_createClass(Tabs, [{
+		key: 'render',
+		value: function () {
+			function render() {
+				var _this2 = this;
+
+				var _props = this.props,
+				    children = _props.children,
+				    _props$selectedItem = _props.selectedItem,
+				    selectedItem = _props$selectedItem === undefined ? 0 : _props$selectedItem,
+				    tabs = _props.tabs,
+				    other = _objectWithoutProperties(_props, ['children', 'selectedItem', 'tabs']);
+
+				return _react2['default'].createElement(
+					_reactPrimitives.View,
+					_extends({
+						style: [_styles2['default'].tabs]
+					}, other),
+					tabs.map(function (tab, i) {
+						var selectedStyle = selectedItem == i ? _styles2['default']['tabItem--selected'] : {};
+						return _react2['default'].createElement(
+							_Link2['default'],
+							{ onPress: function () {
+									function onPress() {
+										_this2.setState({ selected: i });
+									}
+
+									return onPress;
+								}() },
+							_react2['default'].createElement(
+								_reactPrimitives.View,
+								{ style: [_styles2['default'].tabItem, selectedStyle] },
+								_react2['default'].createElement(
+									_reactPrimitives.Text,
+									{ style: [_styles2['default'].text] },
+									tab
+								)
+							)
+						);
+					})
+				);
+			}
+
+			return render;
+		}()
+	}]);
+
+	return Tabs;
+}(_react2['default'].Component);
+
+exports['default'] = Tabs;
 module.exports = exports['default'];
 
 /***/ })

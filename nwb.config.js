@@ -6,6 +6,6 @@ module.exports = {
 	          test: /\.(inc)$/,
 	          loader: 'raw-loader'
 			}]
-		}
+		},
 	}
 }

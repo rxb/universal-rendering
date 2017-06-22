@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-svgstore');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-convert-svg-to-png');
+	grunt.loadNpmTasks('grunt-filenames-to-json');
 
 	// how to make svgs nice:
 	// optimize your svgs into a folder
@@ -91,7 +92,21 @@ module.exports = function(grunt) {
 					dest: DIST_PNG
 				}]
 			}
-		}
+		},
+
+		filenamesToJson : {
+	    	options : {
+	    		// true if full path should be included, default is false
+	    		fullPath : false,
+	    		// true if file extension should be included, default is false
+	    		extensions : false
+	    	},
+	    	// any valid glob
+	        files : '**/js',
+
+	        // path to write json to
+	        destination : `${DIST}/output.json`
+	    }
 
 	});
 };

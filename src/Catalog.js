@@ -15,8 +15,9 @@ import TextInput from './components/TextInput';
 import Picker from './components/Picker';
 import List from './components/List';
 import Card from './components/Card';
+import Tabs from './components/Tabs';
 import Link from './components/Link';
-
+import Modal from './components/Modal';
 
 const people = [
 	{name: 'Sally Somebody'},
@@ -27,12 +28,15 @@ const people = [
 	{name: 'Andy Avatar'}
 ]
 
+
+
 class Catalog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedPerson: 0
+			selectedPerson: 0,
+			showModal: false
 		}
 	}
 
@@ -82,7 +86,12 @@ class Catalog extends React.Component {
 							<Flex switchDirection="medium">
 								<FlexItem>
 									<Chunk>
-										<DumbButton label="Do it" />
+										<Link
+											onPress={()=>{
+												this.setState({showModal: !this.state.showModal});
+											}}>
+												<DumbButton label="Do it" />
+										</Link>
 									</Chunk>
 								</FlexItem>
 								<FlexItem>
@@ -127,6 +136,10 @@ class Catalog extends React.Component {
 						</Section>
 
 						<Section>
+
+							<Chunk>
+								<Tabs tabs={['one', 'two', 'three']} />
+							</Chunk>
 
 							{/*
 								- 			linear list
@@ -196,8 +209,34 @@ class Catalog extends React.Component {
 									/>
 							</Chunk>
 						</Section>
+
+
 					</Bounds>
 				</Stripe>
+
+				<Modal
+					visible={this.state.showModal}
+					onRequestClose={ () => this.setState({showModal: false}) }
+					>
+						<Section>
+							<Chunk>
+								<Text style={[styles.text, styles.textPageHead]}>Modal</Text>
+							</Chunk>
+							<Chunk>
+								<Text style={[styles.text]}>Hey y'all I'm a modal</Text>
+							</Chunk>
+						</Section>
+						<Section>
+							<Chunk>
+								<Link
+									onPress={()=>{
+										this.setState({showModal: false});
+									}}>
+										<DumbButton label="Let's do this" />
+								</Link>
+							</Chunk>
+						</Section>
+				</Modal>
 			</View>
 
 		);
