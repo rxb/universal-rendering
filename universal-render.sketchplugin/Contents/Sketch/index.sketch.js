@@ -8827,7 +8827,8 @@ var Catalog = function (_React$Component) {
 											onChange: function () {
 												function onChange(tabValue) {
 													_this2.setState({
-														tabValue: tabValue
+														tabValue: tabValue,
+														listVariant: tabValue
 													});
 												}
 
@@ -8835,13 +8836,13 @@ var Catalog = function (_React$Component) {
 											}(),
 											selectedValue: this.state.tabValue
 										},
-										_react2['default'].createElement(_Tabs2['default'].Item, { value: 'one', label: 'One' }),
-										_react2['default'].createElement(_Tabs2['default'].Item, { value: 'two', label: 'Two' }),
-										_react2['default'].createElement(_Tabs2['default'].Item, { value: 'three', label: 'Three' })
+										_react2['default'].createElement(_Tabs2['default'].Item, { value: '', label: 'Default' }),
+										_react2['default'].createElement(_Tabs2['default'].Item, { value: 'hscroll', label: 'Hscroll' }),
+										_react2['default'].createElement(_Tabs2['default'].Item, { value: 'grid', label: 'Grid' })
 									)
 								),
 								_react2['default'].createElement(_List2['default'], {
-									variant: '',
+									variant: this.state.listVariant,
 									items: people,
 									renderItem: function () {
 										function renderItem(item, i) {

@@ -141,14 +141,15 @@ class Catalog extends React.Component {
 								<Tabs
 									onChange={(tabValue)=>{
 										this.setState({
-											tabValue: tabValue
+											tabValue: tabValue,
+											listVariant: tabValue
 										})
 									}}
 									selectedValue={this.state.tabValue}
 									>
-									<Tabs.Item value="one" label="One" />
-									<Tabs.Item value="two" label="Two" />
-									<Tabs.Item value="three" label="Three" />
+									<Tabs.Item value="" label="Default" />
+									<Tabs.Item value="hscroll" label="Hscroll" />
+									<Tabs.Item value="grid" label="Grid" />
 								</Tabs>
 							</Chunk>
 
@@ -161,7 +162,7 @@ class Catalog extends React.Component {
 							*/}
 
 							<List
-								variant=''
+								variant={this.state.listVariant}
 								items={people}
 								renderItem={(item, i)=>{
 									return(
