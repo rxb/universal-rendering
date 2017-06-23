@@ -4,14 +4,17 @@ import styles from '../styles/styles';
 import Link from './Link';
 
 const TabItem = (props: PropsType) => {
-  const { value, label, selected } = props;
+  const {
+  	value,
+  	label,
+  	selected,
+  	onChange = () => {}
+  } = props;
   const selectedStyle = (selected) ? {item: styles['tabItem--selected'], text: styles['tabText--selected']} : {};
 
   return (
 	<Link
-		onPress={()=>{
-			console.log(value);
-		}}
+		onPress={ () => onChange(value) }
 		>
 		<View style={[styles.tabItem, selectedStyle.item]}>
 			<Text style={[styles.text, styles.textSecondary, selectedStyle.text]}>{label}</Text>
@@ -30,6 +33,7 @@ class Tabs extends React.Component {
 	render() {
 		const {
 			children,
+			onChange,
 			...other
 		} = this.props;
 
@@ -39,7 +43,8 @@ class Tabs extends React.Component {
 		// pass selectedness to child
 		const childrenWithProps = React.Children.map(children, function (child) {
 	        return React.cloneElement(child, {
-	            selected: (selectedValue == child.props.value)
+	            selected: (selectedValue == child.props.value),
+	            onChange
 	        });
 	    });
 

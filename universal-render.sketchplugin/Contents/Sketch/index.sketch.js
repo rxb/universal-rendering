@@ -21370,7 +21370,7 @@ module.exports = exports['default'];
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(console) {Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
@@ -21405,7 +21405,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TabItem = function TabItem(props) {
 	var value = props.value,
 	    label = props.label,
-	    selected = props.selected;
+	    selected = props.selected,
+	    _props$onChange = props.onChange,
+	    onChange = _props$onChange === undefined ? function () {} : _props$onChange;
 
 	var selectedStyle = selected ? { item: _styles2['default']['tabItem--selected'], text: _styles2['default']['tabText--selected'] } : {};
 
@@ -21414,7 +21416,7 @@ var TabItem = function TabItem(props) {
 		{
 			onPress: function () {
 				function onPress() {
-					console.log(value);
+					return onChange(value);
 				}
 
 				return onPress;
@@ -21447,7 +21449,8 @@ var Tabs = function (_React$Component) {
 			function render() {
 				var _props = this.props,
 				    children = _props.children,
-				    other = _objectWithoutProperties(_props, ['children']);
+				    onChange = _props.onChange,
+				    other = _objectWithoutProperties(_props, ['children', 'onChange']);
 
 				// default to first tab
 
@@ -21457,7 +21460,8 @@ var Tabs = function (_React$Component) {
 				// pass selectedness to child
 				var childrenWithProps = _react2['default'].Children.map(children, function (child) {
 					return _react2['default'].cloneElement(child, {
-						selected: selectedValue == child.props.value
+						selected: selectedValue == child.props.value,
+						onChange: onChange
 					});
 				});
 
@@ -21481,7 +21485,6 @@ Tabs.Item = TabItem;
 
 exports['default'] = Tabs;
 module.exports = exports['default'];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ })
 /******/ ]);
