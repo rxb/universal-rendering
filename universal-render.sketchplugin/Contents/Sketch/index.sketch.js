@@ -607,18 +607,28 @@ var styles = _reactPrimitives.StyleSheet.create({
 
 	// TABS
 	tabs: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		alignItems: 'stretch'
 	},
 	tabItem: {
-		flex: 0,
-		marginRight: space
+		minHeight: '-webkit-min-content',
+		paddingHorizontal: space
 	},
+
+	'tabItem--variableWidth': {
+		flex: 0
+	},
+
+	'tabItem--fullWidth': {
+		flex: 1,
+		textAlign: 'center'
+	},
+
 	'tabItem--selected': {
 		borderBottomColor: 'blue',
 		borderBottomWidth: 3
 	},
 	'tabText--selected': {
-		fontWeight: 700,
 		color: 'blue'
 	},
 
@@ -21407,10 +21417,13 @@ var TabItem = function TabItem(props) {
 	var value = props.value,
 	    label = props.label,
 	    selected = props.selected,
+	    fullWidth = props.fullWidth,
 	    _props$onChange = props.onChange,
 	    onChange = _props$onChange === undefined ? function () {} : _props$onChange;
 
+
 	var selectedStyle = selected ? { item: _styles2['default']['tabItem--selected'], text: _styles2['default']['tabText--selected'] } : {};
+	var widthStyle = fullWidth ? _styles2['default']['tabItem--fullWidth'] : _styles2['default']['tabItem--variableWidth'];
 
 	return _react2['default'].createElement(
 		_Link2['default'],
@@ -21421,16 +21434,13 @@ var TabItem = function TabItem(props) {
 				}
 
 				return onPress;
-			}()
+			}(),
+			style: [_styles2['default'].tabItem, selectedStyle.item, widthStyle]
 		},
 		_react2['default'].createElement(
-			_reactPrimitives.View,
-			{ style: [_styles2['default'].tabItem, selectedStyle.item] },
-			_react2['default'].createElement(
-				_reactPrimitives.Text,
-				{ style: [_styles2['default'].text, _styles2['default'].textSecondary, selectedStyle.text] },
-				label
-			)
+			_reactPrimitives.Text,
+			{ style: [_styles2['default'].text, _styles2['default'].textSecondary, selectedStyle.text] },
+			label
 		)
 	);
 };
@@ -21451,7 +21461,8 @@ var Tabs = function (_React$Component) {
 				var _props = this.props,
 				    children = _props.children,
 				    onChange = _props.onChange,
-				    other = _objectWithoutProperties(_props, ['children', 'onChange']);
+				    fullWidth = _props.fullWidth,
+				    other = _objectWithoutProperties(_props, ['children', 'onChange', 'fullWidth']);
 
 				// default to first tab
 
@@ -21462,7 +21473,8 @@ var Tabs = function (_React$Component) {
 				var childrenWithProps = _react2['default'].Children.map(children, function (child) {
 					return _react2['default'].cloneElement(child, {
 						selected: selectedValue == child.props.value,
-						onChange: onChange
+						onChange: onChange,
+						fullWidth: fullWidth
 					});
 				});
 

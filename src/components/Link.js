@@ -13,6 +13,7 @@ class Link extends React.Component {
 	render() {
 		const {
 			children,
+			style,
 			...other
 		} = this.props;
 		return(
@@ -30,9 +31,9 @@ class Link extends React.Component {
 				}}
 				>
 					<View
-						style={{
+						style={[ style, {
 							opacity: this.state.opacity
-						}}
+						}]}
 						>
 						{children}
 					</View>

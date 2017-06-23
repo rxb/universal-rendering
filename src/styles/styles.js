@@ -112,17 +112,27 @@ const styles = StyleSheet.create({
 	// TABS
 	tabs: {
 		flexDirection: 'row',
+		alignItems: 'stretch',
 	},
 	tabItem: {
-		flex: 0,
-		marginRight: space,
+		minHeight: '-webkit-min-content',
+		paddingHorizontal: space
 	},
+
+	'tabItem--variableWidth':{
+		flex: 0
+	},
+
+	'tabItem--fullWidth': {
+		flex: 1,
+		textAlign: 'center'
+	},
+
 	'tabItem--selected': {
 		borderBottomColor: 'blue',
 		borderBottomWidth: 3,
 	},
 	'tabText--selected': {
-		fontWeight: 700,
 		color: 'blue'
 	},
 

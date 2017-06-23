@@ -8,17 +8,19 @@ const TabItem = (props: PropsType) => {
   	value,
   	label,
   	selected,
+  	fullWidth,
   	onChange = () => {}
   } = props;
+
   const selectedStyle = (selected) ? {item: styles['tabItem--selected'], text: styles['tabText--selected']} : {};
+  const widthStyle = (fullWidth) ? styles['tabItem--fullWidth'] : styles['tabItem--variableWidth'];
 
   return (
 	<Link
 		onPress={ () => onChange(value) }
+		style={[styles.tabItem, selectedStyle.item, widthStyle]}
 		>
-		<View style={[styles.tabItem, selectedStyle.item]}>
 			<Text style={[styles.text, styles.textSecondary, selectedStyle.text]}>{label}</Text>
-		</View>
 	</Link>
   )
 }
@@ -34,6 +36,7 @@ class Tabs extends React.Component {
 		const {
 			children,
 			onChange,
+			fullWidth,
 			...other
 		} = this.props;
 
@@ -44,7 +47,8 @@ class Tabs extends React.Component {
 		const childrenWithProps = React.Children.map(children, function (child) {
 	        return React.cloneElement(child, {
 	            selected: (selectedValue == child.props.value),
-	            onChange
+	            onChange,
+	            fullWidth,
 	        });
 	    });
 
