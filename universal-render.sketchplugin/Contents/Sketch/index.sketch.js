@@ -9466,7 +9466,8 @@ var Catalog = function (_React$Component) {
 									_Chunk2['default'],
 									{ inline: true },
 									_react2['default'].createElement(_Chip2['default'], { label: 'Popular' }),
-									_react2['default'].createElement(_Chip2['default'], { label: 'Popular' })
+									_react2['default'].createElement(_Chip2['default'], { label: 'Popular' }),
+									_react2['default'].createElement(_Chip2['default'], { label: 'Dumb' })
 								)
 							),
 							_react2['default'].createElement(

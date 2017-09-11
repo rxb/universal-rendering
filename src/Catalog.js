@@ -90,6 +90,7 @@ class Catalog extends React.Component {
 							<Chunk inline>
 								<Chip label="Popular" />
 								<Chip label="Popular" />
+								<Chip label="Dumb" />
 							</Chunk>
 						</Section>
 						<Section>

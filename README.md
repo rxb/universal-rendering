@@ -14,7 +14,7 @@ grunt convert-svg-to-png
 sketchapp render test
 ```
 node assetServer.js
-npm run build
+npm run render
 ```
 
 web render test
