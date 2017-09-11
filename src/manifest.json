@@ -3,7 +3,7 @@
   "bundleVersion": 1,
   "commands": [
     {
-      "name": "react-sketchapp: Foursquare + Google Maps",
+      "name": "Meetup components: Universal Render",
       "identifier": "main",
       "script": "./index.sketch.js"
     }

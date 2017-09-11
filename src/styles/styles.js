@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
 		paddingBottom: space
 	},
 
+	// stacking up some inline
+	inline: {
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
 
 	// LISTS
 	// react-sketchapp lists other than default depend on yoga https://github.com/airbnb/react-sketchapp/issues/52
@@ -101,6 +106,22 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 
+	// CHIP
+	chip: {
+		backgroundColor: '#eee',
+		paddingVertical: space*0.5,
+		paddingHorizontal: space,
+		borderRadius: 20,
+		flex: 0,
+		flexBasis: 0,
+		minHeight: '-webkit-min-content',
+		width: 'auto',
+		minWidth: '-webkit-min-content'
+	},
+	chipText: {
+		textAlign: 'center'
+	},
+
 	// CARD
 	card: {
 		borderRadius: 5,
@@ -116,7 +137,8 @@ const styles = StyleSheet.create({
 	},
 	tabItem: {
 		minHeight: '-webkit-min-content',
-		paddingHorizontal: space
+		paddingHorizontal: space,
+		paddingVertical: space / 2
 	},
 
 	'tabItem--variableWidth':{
@@ -151,6 +173,16 @@ const styles = StyleSheet.create({
 		left: space*2,
 		right: space*2,
 		bottom: space*2
+	},
+
+	// TOAST
+	toast: {
+		backgroundColor: 'red',
+		position: 'fixed',
+		left: space*2,
+		right: space*2,
+		bottom: space*2,
+		padding: space
 	},
 
 	// AVATAR

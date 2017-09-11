@@ -15,9 +15,13 @@ import TextInput from './components/TextInput';
 import Picker from './components/Picker';
 import List from './components/List';
 import Card from './components/Card';
+import Chip from './components/Chip';
+import Inline from './components/Inline';
 import Tabs from './components/Tabs';
 import Link from './components/Link';
 import Modal from './components/Modal';
+import Toast from './components/Toast';
+
 
 const people = [
 	{name: 'Sally Somebody'},
@@ -44,15 +48,17 @@ class Catalog extends React.Component {
 		return(
 
 			<View>
+
 				<Stripe image="https://c2.staticflickr.com/6/5590/15229315615_95d06272ce_z.jpg" style={{minHeight: 250}}>
 					<Bounds>
 						<Section>
 							<Chunk>
-								{/* some stuff? */}
+								{/* something here? */}
 							</Chunk>
 						</Section>
 					</Bounds>
 				</Stripe>
+
 				<Stripe>
 					<Bounds>
 						<Section>
@@ -75,11 +81,15 @@ class Catalog extends React.Component {
 						</Section>
 						<Section>
 							<Chunk>
-								<Text style={[styles.text, styles.textPageHead]}>Here we go!</Text>
+								<Text style={[styles.text, styles.textPageHead]}>Here we go!!!</Text>
 							</Chunk>
 							<Chunk>
 								<Text style={styles.text}>Please work</Text>
 								<Text style={[styles.text, styles.textSecondary]}>Please work</Text>
+							</Chunk>
+							<Chunk inline>
+								<Chip label="Popular" />
+								<Chip label="Popular" />
 							</Chunk>
 						</Section>
 						<Section>
@@ -136,7 +146,6 @@ class Catalog extends React.Component {
 						</Section>
 
 						<Section>
-
 							<Chunk>
 								<Tabs
 									onChange={(tabValue)=>{
@@ -145,6 +154,7 @@ class Catalog extends React.Component {
 											listVariant: tabValue
 										})
 									}}
+									fullWidth
 									selectedValue={this.state.tabValue}
 									>
 									<Tabs.Item value="" label="Default" />
@@ -226,6 +236,8 @@ class Catalog extends React.Component {
 					</Bounds>
 				</Stripe>
 
+
+
 				<Modal
 					visible={this.state.showModal}
 					onRequestClose={ () => this.setState({showModal: false}) }
@@ -249,6 +261,7 @@ class Catalog extends React.Component {
 							</Chunk>
 						</Section>
 				</Modal>
+
 			</View>
 
 		);
